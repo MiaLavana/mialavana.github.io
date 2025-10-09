@@ -178,7 +178,96 @@
       </div>
     </div>
   </section>
+<!-- Testimonials -->
+<section id="testimonials" class="py-16 bg-slate-50">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-3xl font-extrabold">Testimonials</h2>
+      <div class="hidden md:flex items-center gap-2">
+        <button id="prevTest" class="rounded-xl border border-slate-300 px-3 py-2 hover:bg-white" aria-label="Previous testimonial">◀</button>
+        <button id="nextTest" class="rounded-xl border border-slate-300 px-3 py-2 hover:bg-white" aria-label="Next testimonial">▶</button>
+      </div>
+    </div>
 
+    <!-- Auto-rotating, swipeable track -->
+    <div id="testTrack" class="mt-6 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 scrollbar-hide">
+      <div class="grid grid-flow-col auto-cols-[88%] sm:auto-cols-[70%] md:auto-cols-[32%] gap-4 md:gap-6">
+
+        <!-- Mike Kim -->
+        <figure class="card rounded-2xl bg-white p-6 snap-start">
+          <blockquote class="text-slate-700 text-sm leading-relaxed mb-4">“Mia, to me, represents 'Mamba Mentality.' We equate those who think, or perhaps, not the most vocal, as a weakness. As the Black Mamba, she knows when to go in and say the things that need to be told. When you combine her acumen to lean in with compassion, it's a deadly mix of effectiveness + execution.”</blockquote>
+          <figcaption class="flex items-center gap-3">
+            <img src="https://media.licdn.com/dms/image/v2/D4D03AQHv-Si9Nox4yA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1664979704907?e=1762992000&v=beta&t=3W69JupXZ784QtXyBqs4_5vsWOIFh4eyt3aZofCZuoY" alt="Mike Kim" class="w-12 h-12 rounded-full object-cover">
+            <div>
+              <div class="font-semibold text-sm">Mike Kim</div>
+              <div class="text-xs text-slate-500">Founder & Creative Director, Some Near Place</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- Ken Weigel -->
+        <figure class="card rounded-2xl bg-white p-6 snap-start">
+          <blockquote class="text-slate-700 text-sm leading-relaxed mb-4">“I have had the pleasure of managing Mia for data analytics in our marketing department. Mia is highly skilled at managing and studying metrics data in order to determine the ROI of marketing efforts like calls-to-action, blog posts, channel performance, and thought leadership pieces, and to identify opportunities for improvement. Not only did Mia work with sales and lead generation applications, she also did marketing analytics which gave us a profound insight into our customers preferences and trends. Mia was a pleasure to work with and her natural ability to get along with everyone was a great asset to our company.”</blockquote>
+          <figcaption class="flex items-center gap-3">
+            <img src="https://media.licdn.com/dms/image/v2/C5603AQHV_Xx45FLl1A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1553569009695?e=1762992000&v=beta&t=FbS9-2xHaIAJbUklMofFtfsIWIjSmEP2sUaLg1qTOm0" alt="Ken Weigel" class="w-12 h-12 rounded-full object-cover">
+            <div>
+              <div class="font-semibold text-sm">Ken Weigel</div>
+              <div class="text-xs text-slate-500">CEO, ABC Office Systems</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <!-- Rich Yueh -->
+        <figure class="card rounded-2xl bg-white p-6 snap-start">
+          <blockquote class="text-slate-700 text-sm leading-relaxed mb-4">“Her positivity and encouragement are always radiant! I highly recommend Mia and would work with her again.”</blockquote>
+          <figcaption class="flex items-center gap-3">
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQGIgs0s2QQmPA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1671405648792?e=1762992000&v=beta&t=rtaNC7KAkNB9Q1C8vCvxgzRTNKVkrY57Nn02Xp7eBcA" alt="Rich Yueh" class="w-12 h-12 rounded-full object-cover">
+            <div>
+              <div class="font-semibold text-sm">Rich Yueh, Ph.D.</div>
+              <div class="text-xs text-slate-500">Founder, UCR Nexus Studio</div>
+            </div>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <p class="mt-4 text-xs text-slate-500 text-center">Swipe on mobile • Auto-rotates every 6s • Pause on hover</p>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById('testTrack');
+  const prevBtn = document.getElementById('prevTest');
+  const nextBtn = document.getElementById('nextTest');
+
+  function cardWidth() {
+    const card = track?.querySelector('figure');
+    return card ? card.getBoundingClientRect().width + 16 : 320;
+  }
+
+  let autoTimer;
+  const startAuto = () => {
+    stopAuto();
+    autoTimer = setInterval(() => {
+      track?.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+      if (track) {
+        const nearEnd = Math.abs(track.scrollWidth - track.clientWidth - track.scrollLeft) < 4;
+        if (nearEnd) track.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    }, 6000);
+  };
+  const stopAuto = () => autoTimer && clearInterval(autoTimer);
+
+  ['mouseenter','touchstart','focusin'].forEach(evt => track?.addEventListener(evt, stopAuto));
+  ['mouseleave','touchend','focusout'].forEach(evt => track?.addEventListener(evt, startAuto));
+
+  prevBtn?.addEventListener('click', () => track?.scrollBy({ left: -cardWidth(), behavior: 'smooth' }));
+  nextBtn?.addEventListener('click', () => track?.scrollBy({ left:  cardWidth(), behavior: 'smooth' }));
+
+  startAuto();
+</script>
+    
   <!-- Contact -->
   <section id="contact" class="py-16 md:py-20 bg-slate-50">
     <div class="mx-auto max-w-3xl px-4 text-center">
