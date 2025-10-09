@@ -7,6 +7,7 @@
   <!-- Tailwind CSS via CDN for a single-file starter -->
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="description" content="Portfolio site for Mia Lavana — operator, educator, creator." />
+  <meta name="theme-color" content="#0ea5e9" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,124 +15,142 @@
     :root { --ring: rgb(59 130 246 / 0.35); }
     html { scroll-behavior: smooth; }
     body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", "Noto Sans", Arial, sans-serif; }
-    .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
-    .hero-gradient { background: radial-gradient(1200px 600px at 80% -10%, rgba(59,130,246,.15), rgba(255,255,255,0)), linear-gradient(to bottom, #ffffff, #f8fafc 60%, #ffffff); }
-    .card { border: 1px solid rgba(0,0,0,.06); }
+    .glass { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); }
+    .hero-gradient { background: radial-gradient(900px 420px at 80% -10%, rgba(59,130,246,.18), rgba(255,255,255,0)), linear-gradient(to bottom, #ffffff, #f8fafc 60%, #ffffff); }
+    .card { border: 1px solid rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
     .card:hover { box-shadow: 0 10px 30px rgba(0,0,0,.08); transform: translateY(-2px); }
     .tag { border: 1px solid rgba(0,0,0,.08); }
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
   </style>
 </head>
 <body class="text-slate-800">
-  <!-- Navigation -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-white px-3 py-2 rounded-md shadow">Skip to content</a>
+
+  <!-- Navigation (mobile-first) -->
   <header class="fixed top-0 inset-x-0 z-50 glass">
     <div class="mx-auto max-w-6xl px-4">
       <div class="flex h-16 items-center justify-between">
         <a href="#home" class="font-extrabold tracking-tight text-xl">Mia<span class="text-blue-600">Lavana</span></a>
+        <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#about" class="hover:text-blue-600">About</a>
           <a href="#qualifications" class="hover:text-blue-600">Qualifications</a>
           <a href="#portfolio" class="hover:text-blue-600">Portfolio</a>
           <a href="#contact" class="hover:text-blue-600">Contact</a>
         </nav>
-        <a href="#contact" class="hidden md:inline-flex items-center gap-2 rounded-2xl bg-blue-600 px-4 py-2 text-white text-sm font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">Get in touch</a>
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#contact" class="inline-flex items-center gap-2 rounded-2xl bg-blue-600 px-4 py-2 text-white text-sm font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">Get in touch</a>
+        </div>
+        <!-- Mobile menu button -->
+        <button id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-slate-300 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <!-- Mobile menu panel -->
+      <div id="mobileMenu" class="md:hidden hidden pb-4">
+        <nav class="grid gap-2 text-base font-medium pt-2">
+          <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#about">About</a>
+          <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#qualifications">Qualifications</a>
+          <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#portfolio">Portfolio</a>
+          <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#contact">Contact</a>
+          <a class="mt-2 inline-flex items-center justify-center rounded-2xl bg-blue-600 px-4 py-3 text-white font-semibold shadow-md hover:shadow-lg" href="#contact">Get in touch</a>
+        </nav>
       </div>
     </div>
   </header>
 
+  <main id="main">
   <!-- Hero -->
-  <section id="home" class="hero-gradient pt-32 pb-20">
-    <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
+  <section id="home" class="hero-gradient pt-24 md:pt-32 pb-16 md:pb-20">
+    <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-8 md:gap-10 items-center">
       <div>
-        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">Operator • Educator • Creator</h1>
-        <p class="mt-5 text-lg text-slate-600">I build high-performing teams, premium customer experiences, and revenue systems. Director of Learning & Development at Jardín Las Vegas, author of <em>FUMES</em>, and founder in coffee, retail, and analytics ventures.</p>
-      <div class="mt-6 flex flex-wrap gap-3">
-  <span class="tag rounded-full px-3 py-1 text-xs">Strategic Revenue Management</span>
-  <span class="tag rounded-full px-3 py-1 text-xs">Brand & Market Expansion Strategy</span>
-  <span class="tag rounded-full px-3 py-1 text-xs">Operational Excellence & Transformation</span>
-  <span class="tag rounded-full px-3 py-1 text-xs">Executive Collaboration & Stakeholder Alignment</span>
-  <span class="tag rounded-full px-3 py-1 text-xs">Organizational Performance & Enablement</span>
-</div>
-        <div class="mt-8 flex items-center gap-3">
-          <a href="#portfolio" class="rounded-2xl border border-slate-300 px-4 py-2 font-semibold hover:border-slate-400">See work</a>
-          <a href="#contact" class="rounded-2xl bg-slate-900 px-4 py-2 text-white font-semibold hover:bg-slate-800">Contact</a>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Operator • Educator • Creator</h1>
+        <p class="mt-4 text-base sm:text-lg text-slate-600">I build high-performing teams, premium customer experiences, and revenue systems. Director of Learning & Development at Jardín Las Vegas, author of <em>FUMES</em>, and founder in coffee, retail, and analytics ventures.</p>
+        <div class="mt-5 sm:mt-6 flex flex-wrap gap-2.5">
+          <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Strategic Revenue Management</span>
+          <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Brand & Market Expansion Strategy</span>
+          <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Operational Excellence & Transformation</span>
+          <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Executive Collaboration & Stakeholder Alignment</span>
+          <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Organizational Performance & Enablement</span>
+        </div>
+        <div class="mt-6 sm:mt-8 flex items-center gap-3">
+          <a href="#portfolio" class="rounded-2xl border border-slate-300 px-4 py-2.5 font-semibold hover:border-slate-400">See work</a>
+          <a href="#contact" class="rounded-2xl bg-slate-900 px-4 py-2.5 text-white font-semibold hover:bg-slate-800">Contact</a>
         </div>
       </div>
-     <div class="relative">
-       <div class="absolute -inset-4 -z-10 rounded-3xl bg-gradient-to-tr from-blue-100 to-transparent"></div>
-       <img
-         src="mia-headshot.jpg"
-         alt="Mia Lavana headshot"
-         class="rounded-3xl w-full h-[460px] md:h-[520px] object-cover shadow-2xl"
-         fetchpriority="high"
-         decoding="async"
-       />
-     </div>
-   </div>        <!-- END hero grid container -->
-</section>       <!-- END hero section -->
+      <div class="relative order-first md:order-none">
+        <div class="absolute -inset-3 -z-10 rounded-3xl bg-gradient-to-tr from-blue-100 to-transparent"></div>
+        <img
+          src="mia-headshot.jpg"
+          alt="Mia Lavana headshot"
+          class="rounded-3xl w-full h-[380px] sm:h-[420px] md:h-[520px] object-cover shadow-2xl"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </section>
 
-
-<!-- About -->
-<section id="about" class="py-20 bg-white">
-  <div class="mx-auto max-w-5xl px-4">
-    <h2 class="text-3xl font-extrabold">About</h2>
-    <p class="mt-4 text-slate-600 leading-relaxed">
-      I believe great businesses start with intention, a clear “why” that guides every system, story, and strategy.
-      My work lives at the intersection of culture and commerce: creating experiences that engage, elevate, and deliver outcomes.
-      Whether in retail, hospitality, or technology, I focus on building value that outlasts trends and translates across industries.
-    </p>
-  </div>
-</section>
+  <!-- About -->
+  <section id="about" class="py-16 md:py-20 bg-white">
+    <div class="mx-auto max-w-5xl px-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">About</h2>
+      <p class="mt-4 text-slate-600 leading-relaxed text-[15px] sm:text-base">
+        I believe great businesses start with intention, a clear “why” that guides every system, story, and strategy.
+        My work lives at the intersection of culture and commerce: creating experiences that engage, elevate, and deliver outcomes.
+        Whether in retail, hospitality, or technology, I focus on building value that outlasts trends and translates across industries.
+      </p>
+    </div>
+  </section>
 
   <!-- Qualifications -->
-<!-- Qualifications -->
-<section id="qualifications" class="py-20 bg-slate-50">
-  <div class="mx-auto max-w-6xl px-4">
-    <h2 class="text-3xl font-extrabold">Qualifications</h2>
-    <div class="mt-8 grid md:grid-cols-3 gap-6">
-      
-      <!-- Revenue & Operational Leadership -->
-      <div class="card rounded-2xl p-6 bg-white">
-        <h3 class="font-semibold text-lg">Revenue & Operational Leadership</h3>
-        <ul class="mt-3 space-y-2 text-sm text-slate-600 list-disc list-inside">
-          <li><strong>Directed vendor and category management</strong> across $30M+ portfolios, driving measurable ROI and margin growth.</li>
-          <li><strong>Architected scalable operating systems</strong> and SOP frameworks that improved efficiency, compliance, and profitability.</li>
-          <li><strong>Partnered cross-functionally with Finance, Marketing, and Ops</strong> to align KPI dashboards and revenue targets.</li>
-        </ul>
+  <section id="qualifications" class="py-16 md:py-20 bg-slate-50">
+    <div class="mx-auto max-w-6xl px-4">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">Qualifications</h2>
+      <div class="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <!-- Revenue & Operational Leadership -->
+        <div class="card rounded-2xl p-5 md:p-6 bg-white">
+          <h3 class="font-semibold text-lg">Revenue & Operational Leadership</h3>
+          <ul class="mt-3 space-y-2 text-[15px] text-slate-600 list-disc list-inside">
+            <li><strong>Directed vendor and category management</strong> across $30M+ portfolios, driving measurable ROI and margin growth.</li>
+            <li><strong>Architected scalable operating systems</strong> and SOP frameworks that improved efficiency, compliance, and profitability.</li>
+            <li><strong>Partnered cross-functionally with Finance, Marketing, and Ops</strong> to align KPI dashboards and revenue targets.</li>
+          </ul>
+        </div>
+        <!-- Data Strategy & Business Intelligence -->
+        <div class="card rounded-2xl p-5 md:p-6 bg-white">
+          <h3 class="font-semibold text-lg">Data Strategy & Business Intelligence</h3>
+          <ul class="mt-3 space-y-2 text-[15px] text-slate-600 list-disc list-inside">
+            <li><strong>Built real-time executive dashboards</strong> in Looker, Power BI, and Excel integrating AP, forecasting, and sales metrics.</li>
+            <li><strong>Delivered predictive analytics</strong> and revenue pacing models that improved decision speed and forecast accuracy by double digits.</li>
+            <li><strong>Championed automation and GIS-based insights</strong> to support enterprise expansion and territory optimization.</li>
+          </ul>
+        </div>
+        <!-- Learning, Development & Brand Enablement -->
+        <div class="card rounded-2xl p-5 md:p-6 bg-white">
+          <h3 class="font-semibold text-lg">Learning, Development & Brand Enablement</h3>
+          <ul class="mt-3 space-y-2 text-[15px] text-slate-600 list-disc list-inside">
+            <li><strong>Designed consultative sales and compliance programs</strong> that elevated productivity, retention, and sales performance.</li>
+            <li><strong>Launched certification frameworks</strong> that scaled training across 100+ employees, reducing onboarding time by 40%.</li>
+            <li><strong>Produced brand storytelling and voiceover content</strong> that strengthened culture, employer brand, and market perception.</li>
+          </ul>
+        </div>
       </div>
-
-      <!-- Data Strategy & Business Intelligence -->
-      <div class="card rounded-2xl p-6 bg-white">
-        <h3 class="font-semibold text-lg">Data Strategy & Business Intelligence</h3>
-        <ul class="mt-3 space-y-2 text-sm text-slate-600 list-disc list-inside">
-          <li><strong>Built real-time executive dashboards</strong> in Looker, Power BI, and Excel integrating AP, forecasting, and sales metrics.</li>
-          <li><strong>Delivered predictive analytics</strong> and revenue pacing models that improved decision speed and forecast accuracy by double digits.</li>
-          <li><strong>Championed automation and GIS-based insights</strong> to support enterprise expansion and territory optimization.</li>
-        </ul>
-      </div>
-
-      <!-- Learning, Development & Brand Enablement -->
-      <div class="card rounded-2xl p-6 bg-white">
-        <h3 class="font-semibold text-lg">Learning, Development & Brand Enablement</h3>
-        <ul class="mt-3 space-y-2 text-sm text-slate-600 list-disc list-inside">
-          <li><strong>Designed consultative sales and compliance programs</strong> that elevated productivity, retention, and sales performance.</li>
-          <li><strong>Launched certification frameworks</strong> that scaled training across 100+ employees, reducing onboarding time by 40%.</li>
-          <li><strong>Produced brand storytelling and voiceover content</strong> that strengthened culture, employer brand, and market perception.</li>
-        </ul>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Portfolio -->
-  <section id="portfolio" class="py-20 bg-white">
+  <section id="portfolio" class="py-16 md:py-20 bg-white">
     <div class="mx-auto max-w-6xl px-4">
-      <h2 class="text-3xl font-extrabold">Portfolio</h2>
-      <p class="mt-2 text-slate-600">A few representative projects.</p>
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
+      <h2 class="text-2xl sm:text-3xl font-extrabold">Portfolio</h2>
+      <p class="mt-2 text-slate-600 text-[15px] sm:text-base">A few representative projects.</p>
+      <div class="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         <!-- Project Card 1 -->
         <article class="card rounded-2xl bg-white overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1200&auto=format&fit=crop" alt="Dashboards" class="w-full h-44 object-cover">
+          <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1200&auto=format&fit=crop" alt="Dashboards" class="w-full h-44 object-cover" loading="lazy" decoding="async">
           <div class="p-6">
             <h3 class="font-semibold">Executive Sales Dashboards</h3>
             <p class="mt-2 text-sm text-slate-600">Automated daily/weekly revenue views with YoY bridges, AP aging, and vendor tiers.</p>
@@ -140,7 +159,7 @@
         </article>
         <!-- Project Card 2 -->
         <article class="card rounded-2xl bg-white overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=1200&auto=format&fit=crop" alt="Training" class="w-full h-44 object-cover">
+          <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=1200&auto=format&fit=crop" alt="Training" class="w-full h-44 object-cover" loading="lazy" decoding="async">
           <div class="p-6">
             <h3 class="font-semibold">Sales & L&D Programs</h3>
             <p class="mt-2 text-sm text-slate-600">Consultative selling, METRC/OSHA compliance, and brand partnerships curriculum.</p>
@@ -149,7 +168,7 @@
         </article>
         <!-- Project Card 3 -->
         <article class="card rounded-2xl bg-white overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop" alt="Branding" class="w-full h-44 object-cover">
+          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop" alt="Branding" class="w-full h-44 object-cover" loading="lazy" decoding="async">
           <div class="p-6">
             <h3 class="font-semibold">Brand & Go‑to‑Market</h3>
             <p class="mt-2 text-sm text-slate-600">Launched premium everyday essentials and cafe concepts with clear GTM narratives.</p>
@@ -161,26 +180,55 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-20 bg-slate-50">
+  <section id="contact" class="py-16 md:py-20 bg-slate-50">
     <div class="mx-auto max-w-3xl px-4 text-center">
-      <h2 class="text-3xl font-extrabold">Let’s build something</h2>
-      <p class="mt-3 text-slate-600">Email <a class="text-blue-600 font-medium" href="mailto:hello@mialavana.com">contact@mialavana.com</a> or drop a line below.</p>
-      <form class="mt-8 grid gap-4 text-left">
-        <input type="text" placeholder="Name" class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">
-        <input type="email" placeholder="Email" class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">
-        <textarea rows="4" placeholder="Message" class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]"></textarea>
+      <h2 class="text-2xl sm:text-3xl font-extrabold">Let’s build something</h2>
+      <p class="mt-3 text-slate-600">Email <a class="text-blue-600 font-medium" href="mailto:contact@mialavana.com">contact@mialavana.com</a> or drop a line below.</p>
+      <form class="mt-8 grid gap-4 text-left" action="#" method="post">
+        <label class="sr-only" for="name">Name</label>
+        <input id="name" name="name" type="text" placeholder="Name" autocomplete="name" inputmode="text" class="w-full rounded-xl border border-slate-300 px-4 py-3 min-h-[48px] focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">
+        <label class="sr-only" for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" class="w-full rounded-xl border border-slate-300 px-4 py-3 min-h-[48px] focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">
+        <label class="sr-only" for="message">Message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Message" class="w-full rounded-xl border border-slate-300 px-4 py-3 min-h-[48px] focus:outline-none focus:ring-4 focus:ring-[var(--ring)]"></textarea>
         <button type="button" class="rounded-2xl bg-blue-600 px-6 py-3 text-white font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">Send</button>
       </form>
       <p class="mt-4 text-sm text-slate-500">Or connect on <a class="text-blue-600" href="https://www.linkedin.com/">LinkedIn</a> • <a class="text-blue-600" href="https://github.com/">GitHub</a> • <a class="text-blue-600" href="https://www.instagram.com/">Instagram</a></p>
     </div>
   </section>
 
-  <footer class="py-10 text-center text-sm text-slate-500">
+  <footer class="py-10 text-center text-sm text-slate-500 pb-24 md:pb-10">
     © <span id="year"></span> Mia Lavana — All rights reserved.
   </footer>
 
+  <!-- Sticky mobile action bar -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:glass border-t border-slate-200">
+    <div class="mx-auto max-w-6xl px-4 py-2 flex items-center gap-3" style="padding-bottom: calc(env(safe-area-inset-bottom) + 8px);">
+      <a href="#portfolio" class="flex-1 inline-flex items-center justify-center rounded-2xl border border-slate-300 px-4 py-3 font-semibold">Portfolio</a>
+      <a href="#contact" class="flex-1 inline-flex items-center justify-center rounded-2xl bg-blue-600 px-4 py-3 text-white font-semibold shadow-md">Contact</a>
+    </div>
+  </div>
+  </main>
+
   <script>
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!expanded));
+        mobileMenu.classList.toggle('hidden');
+      });
+      // Close menu when clicking a link
+      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }));
+    }
   </script>
 </body>
 </html>
