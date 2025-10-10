@@ -23,24 +23,11 @@
   .dot { width: 8px; height: 8px; border-radius: 9999px; border: 1px solid rgb(148 163 184); }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-
-  /* Fade-up scroll reveal for portfolio cards */
-  .reveal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.45s ease, transform 0.45s ease;
-  }
-  .reveal.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .reveal.show { opacity: 1; transform: translateY(0); }
 
   @media (prefers-reduced-motion: reduce) {
-    * {
-      animation: none !important;
-      transition: none !important;
-      scroll-behavior: auto !important;
-    }
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   }
 </style>
 
@@ -228,63 +215,43 @@
       </div>
     </section>
 
-    <!-- Live Portfolio Impact (inserted) -->
+    <!-- Live Portfolio Impact (NDA-Safe) -->
     <section id="live-portfolio-impact" class="relative overflow-hidden py-16 sm:py-20">
-      <!-- subtle radial gradient background -->
       <div class="pointer-events-none absolute inset-0 -z-10">
         <div class="absolute left-1/2 top-0 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-500/15 via-sky-400/10 to-blue-600/10 blur-3xl"></div>
       </div>
 
       <div class="mx-auto max-w-6xl px-6">
         <div class="mb-8 flex items-center gap-3">
-          <!-- Neon dot -->
           <span class="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-sky-400 shadow-[0_0_18px_rgba(56,189,248,0.8)]"></span>
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">Live Portfolio Impact</h2>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-5">
-          <!-- Main glass card -->
-          <div class="md:col-span-3">
-            <div class="relative rounded-2xl border border-white/10 bg-slate-900/80 p-8 shadow-2xl backdrop-blur-md">
-              <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10"></div>
+        <div class="max-w-3xl">
+          <div class="relative rounded-2xl border border-white/10 bg-slate-900/80 p-8 shadow-2xl backdrop-blur-md">
+            <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10"></div>
 
-              <p class="mb-3 text-sm uppercase tracking-widest text-white/60">Cumulative value influenced</p>
-              <div class="flex items-end gap-3">
-                <div class="live-counter text-4xl sm:text-5xl md:text-6xl font-extrabold tabular-nums tracking-tight text-white"
-                     aria-live="polite"
-                     data-start="18402230"
-                     data-rate-per-day="40000"
-                     data-decimals="2"
-                     data-prefix="$"
-                     data-suffix=" and counting">
-                  $18,402,230.00 and counting
-                </div>
-                <span class="mb-1 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/70">Live</span>
+            <p class="mb-3 text-sm uppercase tracking-widest text-white/60">Cumulative Impact (aggregated)</p>
+            <div class="flex items-end gap-3">
+              <div class="live-counter text-4xl sm:text-5xl md:text-6xl font-extrabold tabular-nums tracking-tight text-white"
+                   aria-live="polite"
+                   data-start="18402230"
+                   data-rate-per-day="0"
+                   data-decimals="2"
+                   data-prefix="$"
+                   data-suffix="+ (aggregated)">
+                $18,402,230+ (aggregated)
               </div>
-
-              <p class="mt-4 max-w-prose text-sm leading-relaxed text-white/80">
-                A real‑time indicator reflecting the economic scale of projects I lead or contribute to. Rate is calibrated to conservative daily averages and updates continuously.
-              </p>
-
-              <!-- micro legend -->
-              <div class="mt-6 flex flex-wrap items-center gap-3 text-xs text-white/70">
-                <span class="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 ring-1 ring-white/10">Rate source: operations average</span>
-                <span class="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 ring-1 ring-white/10">Method: continuous accrual</span>
-              </div>
+              <span class="mb-1 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/70">Live</span>
             </div>
-          </div>
 
-          <!-- Side KPI stack -->
-          <div class="md:col-span-2 grid grid-cols-1 gap-6">
-            <div class="rounded-2xl border border-slate-200 bg-white p-6">
-              <p class="text-xs uppercase tracking-widest text-slate-500">Daily Retail Throughput</p>
-              <p class="mt-2 text-2xl font-bold text-slate-900">$30K–$50K / day</p>
-              <p class="mt-2 text-sm text-slate-600">Representative of Jardín retail operations under my enablement leadership.</p>
-            </div>
-            <div class="rounded-2xl border border-slate-200 bg-white p-6">
-              <p class="text-xs uppercase tracking-widest text-slate-500">Partner Market Capitalization</p>
-              <p class="mt-2 text-2xl font-bold text-slate-900">$2.5B+ represented</p>
-              <p class="mt-2 text-sm text-slate-600">Includes collaborations with public cannabis operators (e.g., Curaleaf scale).</p>
+            <p class="mt-4 max-w-prose text-sm leading-relaxed text-white/80">
+              This represents a dynamic overview of cumulative impact across various initiatives and projects. All data displayed is aggregated and illustrative.
+            </p>
+
+            <div class="mt-6 flex flex-wrap items-center gap-3 text-xs text-white/70">
+              <span class="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 ring-1 ring-white/10">Data source: internal aggregate</span>
+              <span class="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 ring-1 ring-white/10">Method: illustrative index</span>
             </div>
           </div>
         </div>
@@ -373,7 +340,7 @@
       }));
     }
 
-    // --- Testimonials: single-card carousel (after Contact section) ---
+    // --- Testimonials: single-card carousel ---
     const testimonials = [
       {
         quote: "“Mia, to me, represents 'Mamba Mentality.' We equate those who think, or perhaps, not the most vocal, as a weakness. As the Black Mamba, she knows when to go in and say the things that need to be told. When you combine her acumen to lean in with compassion, it's a deadly mix of effectiveness + execution.”",
