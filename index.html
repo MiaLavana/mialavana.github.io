@@ -11,19 +11,39 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root { --ring: rgb(59 130 246 / 0.35); }
-    html { scroll-behavior: smooth; }
-    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", "Noto Sans", Arial, sans-serif; }
-    .glass { background: rgba(255,255,255,.75); backdrop-filter: blur(12px); }
-    .hero-gradient { background: radial-gradient(900px 420px at 80% -10%, rgba(59,130,246,.18), rgba(255,255,255,0)), linear-gradient(to bottom, #fff, #f8fafc 60%, #fff); }
-    .card { border: 1px solid rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
-    .card:hover { box-shadow: 0 10px 30px rgba(0,0,0,.08); transform: translateY(-2px); }
-    .tag { border: 1px solid rgba(0,0,0,.08); }
-    .dot { width: 8px; height: 8px; border-radius: 9999px; border: 1px solid rgb(148 163 184); }
-    .scrollbar-hide::-webkit-scrollbar { display: none; } .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-    @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important;scroll-behavior:auto!important;} }
-  </style>
+ <style>
+  :root { --ring: rgb(59 130 246 / 0.35); }
+  html { scroll-behavior: smooth; }
+  body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", "Noto Sans", Arial, sans-serif; }
+  .glass { background: rgba(255,255,255,.75); backdrop-filter: blur(12px); }
+  .hero-gradient { background: radial-gradient(900px 420px at 80% -10%, rgba(59,130,246,.18), rgba(255,255,255,0)), linear-gradient(to bottom, #fff, #f8fafc 60%, #fff); }
+  .card { border: 1px solid rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
+  .card:hover { box-shadow: 0 10px 30px rgba(0,0,0,.08); transform: translateY(-2px); }
+  .tag { border: 1px solid rgba(0,0,0,.08); }
+  .dot { width: 8px; height: 8px; border-radius: 9999px; border: 1px solid rgb(148 163 184); }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Fade-up scroll reveal for portfolio cards */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  .reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+
 </head>
 <body class="text-slate-800">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-white px-3 py-2 rounded-md shadow">Skip to content</a>
@@ -143,38 +163,47 @@
     </section>
 
     <!-- Portfolio -->
-    <section id="portfolio" class="py-16 md:py-20 bg-white">
-      <div class="mx-auto max-w-6xl px-4">
-        <h2 class="text-2xl sm:text-3xl font-extrabold">Portfolio</h2>
-        <p class="mt-2 text-slate-600 text-[15px] sm:text-base">A few representative projects.</p>
-        <div class="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          <article class="card rounded-2xl bg-white overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1200&auto=format&fit=crop" alt="Dashboards" class="w-full h-44 object-cover" loading="lazy" decoding="async">
-            <div class="p-6">
-              <h3 class="font-semibold">Executive Sales Dashboards</h3>
-              <p class="mt-2 text-sm text-slate-600">Automated daily/weekly revenue views with YoY bridges, AP aging, and vendor tiers.</p>
-              <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">Request a demo →</a>
-            </div>
-          </article>
-          <article class="card rounded-2xl bg-white overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=1200&auto=format&fit=crop" alt="Training" class="w-full h-44 object-cover" loading="lazy" decoding="async">
-            <div class="p-6">
-              <h3 class="font-semibold">Sales & L&D Programs</h3>
-              <p class="mt-2 text-sm text-slate-600">Consultative selling, METRC/OSHA compliance, and brand partnerships curriculum.</p>
-              <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">View syllabus →</a>
-            </div>
-          </article>
-          <article class="card rounded-2xl bg-white overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop" alt="Branding" class="w-full h-44 object-cover" loading="lazy" decoding="async">
-            <div class="p-6">
-              <h3 class="font-semibold">Brand & Go-to-Market</h3>
-              <p class="mt-2 text-sm text-slate-600">Launched premium everyday essentials and cafe concepts with clear GTM narratives.</p>
-              <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">See case study →</a>
-            </div>
-          </article>
+<section id="portfolio" class="py-16 md:py-20 bg-white">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="text-2xl sm:text-3xl font-extrabold">Portfolio</h2>
+    <p class="mt-2 text-slate-600 text-[15px] sm:text-base">A few representative projects.</p>
+
+    <div class="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+      <article class="card rounded-2xl bg-white overflow-hidden reveal">
+        <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1200&auto=format&fit=crop" alt="Dashboards" class="w-full h-44 object-cover" loading="lazy" decoding="async">
+        <div class="p-6">
+          <h3 class="font-semibold">Executive Sales Dashboards</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            Empower leaders with real-time clarity. Automated daily and weekly revenue views with YoY bridges, AP aging, and vendor tiers — designed to help teams move faster, decide smarter, and scale with confidence.
+          </p>
+          <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">Request a demo →</a>
         </div>
-      </div>
-    </section>
+      </article>
+
+      <article class="card rounded-2xl bg-white overflow-hidden reveal">
+        <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?q=80&w=1200&auto=format&fit=crop" alt="Training" class="w-full h-44 object-cover" loading="lazy" decoding="async">
+        <div class="p-6">
+          <h3 class="font-semibold">Consultative Sales & Compliance Training</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            Equip teams with the skills to sell and stay compliant. Purpose-built learning experiences that blend consultative selling, compliance mastery, and brand partnership strategy — all in one seamless framework.
+          </p>
+          <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">View syllabus →</a>
+        </div>
+      </article>
+
+      <article class="card rounded-2xl bg-white overflow-hidden reveal">
+        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1200&auto=format&fit=crop" alt="Brand & GTM" class="w-full h-44 object-cover" loading="lazy" decoding="async">
+        <div class="p-6">
+          <h3 class="font-semibold">Brand & Go-to-Market</h3>
+          <p class="mt-2 text-sm text-slate-600">
+            Elevate ideas into brands that connect and convert. Launched premium everyday essentials and café concepts through data-driven GTM storytelling that blends strategy, creativity, and execution.
+          </p>
+          <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">See case study →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
     <!-- Contact -->
     <section id="contact" class="py-16 md:py-20 bg-slate-50">
