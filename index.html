@@ -211,6 +211,80 @@
               <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">See case study →</a>
             </div>
           </article>
+
+          <!-- ✅ NEW: ROI Calculator (interactive card) -->
+          <article class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden md:col-span-3">
+            <div class="p-6 md:p-8">
+              <div class="flex items-center justify-between flex-wrap gap-3">
+                <h3 class="font-semibold text-lg">ROI Calculator</h3>
+                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                  <span class="h-2 w-2 rounded-full bg-green-500"></span> Live
+                </span>
+              </div>
+
+              <p class="mt-2 text-sm text-slate-600">
+                Uses ROI = (G − C) ÷ C, where G is expected gain and C is total cost. Total cost supports upfront + monthly × months.
+              </p>
+
+              <div class="mt-5 grid grid-cols-1 md:grid-cols-4 gap-4">
+                <label class="block">
+                  <span class="text-sm font-medium">Expected Gain (G)</span>
+                  <input id="roi_gain" type="number" inputmode="decimal" placeholder="e.g. 10000"
+                         class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]" />
+                </label>
+
+                <label class="block">
+                  <span class="text-sm font-medium">Upfront Cost</span>
+                  <input id="roi_upfront" type="number" inputmode="decimal" placeholder="e.g. 6000"
+                         class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]" />
+                </label>
+
+                <label class="block">
+                  <span class="text-sm font-medium">Monthly Cost</span>
+                  <input id="roi_monthly" type="number" inputmode="decimal" placeholder="e.g. 25"
+                         class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]" />
+                </label>
+
+                <label class="block">
+                  <span class="text-sm font-medium">Months</span>
+                  <input id="roi_months" type="number" inputmode="numeric" placeholder="e.g. 12"
+                         class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]" />
+                </label>
+              </div>
+
+              <div class="mt-5 flex flex-wrap items-center gap-3">
+                <button id="roi_calc_btn" class="rounded-2xl bg-blue-600 px-5 py-2.5 text-white font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">
+                  Calculate ROI
+                </button>
+                <button id="roi_reset_btn" class="rounded-2xl border border-slate-300 px-5 py-2.5 font-semibold hover:bg-slate-50">
+                  Reset
+                </button>
+              </div>
+
+              <div id="roi_output" class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="rounded-2xl border border-slate-200 p-4">
+                  <div class="text-xs uppercase tracking-wider text-slate-500">Total Cost (C)</div>
+                  <div id="roi_total_cost" class="mt-1 text-2xl font-extrabold tabular-nums">$0.00</div>
+                </div>
+                <div class="rounded-2xl border border-slate-200 p-4">
+                  <div class="text-xs uppercase tracking-wider text-slate-500">ROI</div>
+                  <div id="roi_percent" class="mt-1 text-2xl font-extrabold tabular-nums">0.00%</div>
+                </div>
+                <div class="rounded-2xl border border-slate-200 p-4">
+                  <div class="text-xs uppercase tracking-wider text-slate-500">Signal</div>
+                  <div id="roi_signal" class="mt-1 inline-flex items-center gap-2 rounded-xl px-3 py-1.5 text-sm font-semibold border">
+                    Enter values to evaluate
+                  </div>
+                </div>
+              </div>
+
+              <details class="mt-6 group">
+                <summary class="cursor-pointer text-sm text-slate-600 group-open:text-slate-800 font-medium">Show calculation steps</summary>
+                <pre id="roi_steps" class="mt-3 bg-slate-50 rounded-xl p-4 text-[13px] overflow-x-auto border border-slate-200"></pre>
+              </details>
+            </div>
+          </article>
+          <!-- End ROI card -->
         </div>
       </div>
     </section>
@@ -464,6 +538,74 @@
 
       renderAmt(startAmount);
       requestAnimationFrame(tick);
+    })();
+
+    // ===== ROI Calculator logic =====
+    (function(){
+      const $ = (id) => document.getElementById(id);
+      const nfMoney = new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+      const nfPct = new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      function calc() {
+        const G = Number($('#roi_gain')?.value || 0);
+        const upfront = Number($('#roi_upfront')?.value || 0);
+        const monthly = Number($('#roi_monthly')?.value || 0);
+        const months = Number($('#roi_months')?.value || 0);
+
+        const totalCost = upfront + (monthly * months);
+        $('#roi_total_cost').textContent = nfMoney.format(totalCost);
+
+        if (!G || !totalCost || totalCost <= 0) {
+          $('#roi_percent').textContent = '0.00%';
+          setSignal('Enter values to evaluate', 'border-slate-300 text-slate-700 bg-white');
+          $('#roi_steps').textContent = '';
+          return;
+        }
+
+        const roi = ((G - totalCost) / totalCost) * 100;
+        $('#roi_percent').textContent = `${nfPct.format(roi)}%`;
+
+        // signal band
+        if (roi >= 10) setSignal('Strong ROI', 'border-green-200 text-green-800 bg-green-50');
+        else if (roi >= 0) setSignal('Positive ROI', 'border-emerald-200 text-emerald-800 bg-emerald-50');
+        else setSignal('Negative ROI', 'border-rose-200 text-rose-800 bg-rose-50');
+
+        // steps
+        const steps = [
+          `Inputs: G = ${nfMoney.format(G)}, Upfront = ${nfMoney.format(upfront)}, Monthly = ${nfMoney.format(monthly)}, Months = ${months}`,
+          `Total Cost C = Upfront + (Monthly × Months) = ${nfMoney.format(upfront)} + (${nfMoney.format(monthly)} × ${months}) = ${nfMoney.format(totalCost)}`,
+          `ROI = (G − C) ÷ C × 100 = (${nfMoney.format(G)} − ${nfMoney.format(totalCost)}) ÷ ${nfMoney.format(totalCost)} × 100`,
+          `ROI = ${nfPct.format(roi)}%`
+        ].join('\n');
+        $('#roi_steps').textContent = steps;
+      }
+
+      function setSignal(text, classes) {
+        const el = document.getElementById('roi_signal');
+        el.className = 'mt-1 inline-flex items-center gap-2 rounded-xl px-3 py-1.5 text-sm font-semibold border ' + classes;
+        el.textContent = text;
+      }
+
+      // bind
+      document.getElementById('roi_calc_btn')?.addEventListener('click', calc);
+      ['roi_gain','roi_upfront','roi_monthly','roi_months'].forEach(id=>{
+        document.getElementById(id)?.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); calc(); }});
+        document.getElementById(id)?.addEventListener('blur', calc);
+      });
+
+      document.getElementById('roi_reset_btn')?.addEventListener('click', ()=>{
+        ['roi_gain','roi_upfront','roi_monthly','roi_months'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+        calc();
+      });
+
+      // optional demo defaults for fast play
+      if (document.getElementById('roi_gain')) {
+        document.getElementById('roi_gain').value = 10000;
+        document.getElementById('roi_upfront').value = 6000;
+        document.getElementById('roi_monthly').value = 25;
+        document.getElementById('roi_months').value = 12;
+        calc();
+      }
     })();
   </script>
 </body>
