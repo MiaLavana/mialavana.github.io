@@ -11,26 +11,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
- <style>
-  :root { --ring: rgb(59 130 246 / 0.35); }
-  html { scroll-behavior: smooth; }
-  body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", "Noto Sans", Arial, sans-serif; }
-  .glass { background: rgba(255,255,255,.75); backdrop-filter: blur(12px); }
-  .hero-gradient { background: radial-gradient(900px 420px at 80% -10%, rgba(59,130,246,.18), rgba(255,255,255,0)), linear-gradient(to bottom, #fff, #f8fafc 60%, #fff); }
-  .card { border: 1px solid rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
-  .card:hover { box-shadow: 0 10px 30px rgba(0,0,0,.08); transform: translateY(-2px); }
-  .tag { border: 1px solid rgba(0,0,0,.08); }
-  .dot { width: 8px; height: 8px; border-radius: 9999px; border: 1px solid rgb(148 163 184); }
-  .scrollbar-hide::-webkit-scrollbar { display: none; }
-  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.45s ease, transform 0.45s ease; }
-  .reveal.show { opacity: 1; transform: translateY(0); }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
-  }
-</style>
-
+  <style>
+    :root { --ring: rgb(59 130 246 / 0.35); }
+    html { scroll-behavior: smooth; }
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", "Noto Sans", Arial, sans-serif; }
+    .glass { background: rgba(255,255,255,.75); backdrop-filter: blur(12px); }
+    .hero-gradient { background: radial-gradient(900px 420px at 80% -10%, rgba(59,130,246,.18), rgba(255,255,255,0)), linear-gradient(to bottom, #fff, #f8fafc 60%, #fff); }
+    .card { border: 1px solid rgba(0,0,0,.06); transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { box-shadow: 0 10px 30px rgba(0,0,0,.08); transform: translateY(-2px); }
+    .dot { width: 8px; height: 8px; border-radius: 9999px; border: 1px solid rgb(148 163 184); }
+    .input { width: 100%; min-height: 46px; border-radius: 0.75rem; border: 1px solid rgb(203 213 225); padding: 0.625rem 0.75rem; }
+    .input:focus { outline: none; box-shadow: 0 0 0 4px var(--ring); }
+    .label-one-line { line-height: 1.25rem; height: 1.25rem; display:block; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
 </head>
 <body class="text-slate-800">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-white px-3 py-2 rounded-md shadow">Skip to content</a>
@@ -42,10 +38,9 @@
         <a href="#home" class="font-extrabold tracking-tight text-xl">Mia<span class="text-blue-600">Lavana</span></a>
 
         <!-- Desktop nav -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#about" class="hover:text-blue-600">About</a>
-          <a href="#qualifications" class="hover:text-blue-600">Qualifications</a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
           <a href="#portfolio" class="hover:text-blue-600">Portfolio</a>
+          <a href="#tools" class="hover:text-blue-600">Tools</a>
           <a href="#live-portfolio-impact" class="hover:text-blue-600">Live Impact</a>
           <a href="#contact" class="hover:text-blue-600">Contact</a>
           <a href="#testimonials" class="hover:text-blue-600">Testimonials</a>
@@ -62,9 +57,8 @@
       <!-- Mobile menu panel -->
       <div id="mobileMenu" class="md:hidden hidden pb-4">
         <nav class="grid gap-2 text-base font-medium pt-2">
-          <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#about">About</a>
-          <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#qualifications">Qualifications</a>
           <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#portfolio">Portfolio</a>
+          <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#tools">Tools</a>
           <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#live-portfolio-impact">Live Impact</a>
           <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#contact">Contact</a>
           <a class="px-3 py-3 rounded-xl hover:bg-slate-100" href="#testimonials">Testimonials</a>
@@ -75,264 +69,263 @@
   </header>
 
   <main id="main">
-    <!-- Hero -->
-    <section id="home" class="hero-gradient pt-24 md:pt-32 pb-16 md:pb-20">
-      <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-8 md:gap-10 items-center">
-        <div>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">Operator • Educator • Creator</h1>
-          <p class="mt-4 text-base sm:text-lg text-slate-600">I build high-performing teams, premium customer experiences, and revenue systems. Director of Learning & Development at Jardín Las Vegas, author of <em>FUMES</em>, and founder in coffee, retail, and analytics ventures.</p>
-          <div class="mt-5 sm:mt-6 flex flex-wrap gap-2.5">
-            <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Strategic Revenue Management</span>
-            <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Brand & Market Expansion Strategy</span>
-            <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Operational Excellence & Transformation</span>
-            <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Executive Collaboration & Stakeholder Alignment</span>
-            <span class="tag rounded-full px-3 py-1 text-[11px] sm:text-xs">Organizational Performance & Enablement</span>
-          </div>
-          <div class="mt-6 sm:mt-8 flex items-center gap-3">
-            <a href="#portfolio" class="rounded-2xl border border-slate-300 px-4 py-2.5 font-semibold hover:border-slate-400">See work</a>
-            <a href="#contact" class="rounded-2xl bg-slate-900 px-4 py-2.5 text-white font-semibold hover:bg-slate-800">Contact</a>
-          </div>
-        </div>
-        <div class="relative order-first md:order-none">
-          <div class="absolute -inset-3 -z-10 rounded-3xl bg-gradient-to-tr from-blue-100 to-transparent"></div>
-          <img
-            src="mia-headshot.jpg"
-            alt="Mia Lavana headshot"
-            class="rounded-3xl w-full h-[380px] sm:h-[420px] md:h-[520px] object-cover shadow-2xl"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </div>
-      </div>
-    </section>
+<!-- Hero -->
+<section id="home" class="relative overflow-hidden pt-24 md:pt-32 pb-16 md:pb-20">
+  <!-- Blue glowing background -->
+  <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="absolute left-1/2 top-0 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-400/15 via-cyan-400/10 to-blue-600/10 blur-3xl"></div>
+  </div>
 
-    <!-- About -->
-    <section id="about" class="py-16 md:py-20 bg-white">
-      <div class="mx-auto max-w-5xl px-4">
-        <h2 class="text-2xl sm:text-3xl font-extrabold">About</h2>
-        <p class="mt-4 text-slate-600 leading-relaxed text-[15px] sm:text-base">
-          I believe great businesses start with intention, a clear “why” that guides every system, story, and strategy.
-          My work lives at the intersection of culture and commerce: creating experiences that engage, elevate, and deliver outcomes.
-          Whether in retail, hospitality, or technology, I focus on building value that outlasts trends and translates across industries.
-        </p>
+  <div class="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-8 md:gap-10 items-center">
+    <div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug sm:leading-tight tracking-tight max-w-[22ch]">
+        <span class="block">Smarter systems.</span>
+        <span class="block">Real results.</span>
+      </h1>
+      <p class="mt-3 sm:mt-4 text-base sm:text-lg text-slate-700 max-w-prose">
+        I designed and built these tools to help teams see data clearly, forecast smarter, and make faster decisions.
+      </p>
+      <div class="mt-6 sm:mt-8 flex items-center gap-3">
+        <a href="#portfolio" class="rounded-2xl border border-slate-300 px-4 py-2.5 font-semibold hover:border-slate-400">Explore portfolio</a>
+        <a href="#tools" class="rounded-2xl bg-slate-900 px-4 py-2.5 text-white font-semibold hover:bg-slate-800">Try the tools</a>
       </div>
-    </section>
+    </div>
 
-    <!-- Qualifications -->
-    <section id="qualifications" class="py-16 md:py-20 bg-slate-50">
-      <div class="mx-auto max-w-6xl px-4">
-        <h2 class="text-2xl sm:text-3xl font-extrabold">Qualifications</h2>
-        <div class="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          <div class="card rounded-2xl p-5 md:p-6 bg-white">
-            <h3 class="font-semibold text-lg">Revenue & Operational Leadership</h3>
-            <ul class="mt-3 space-y-2 text-[15px] text-slate-600 list-disc list-inside">
-              <li><strong>Directed vendor and category management</strong> across $30M+ portfolios, driving measurable ROI and margin growth.</li>
-              <li><strong>Architected scalable operating systems</strong> and SOP frameworks that improved efficiency, compliance, and profitability.</li>
-              <li><strong>Partnered cross-functionally with Finance, Marketing, and Ops</strong> to align KPI dashboards and revenue targets.</li>
-            </ul>
-          </div>
-          <div class="card rounded-2xl p-5 md:p-6 bg-white">
-            <h3 class="font-semibold text-lg">Data Strategy & Business Intelligence</h3>
-            <ul class="mt-3 space-y-2 text-[15px] text-slate-600 list-disc list-inside">
-              <li><strong>Built real-time executive dashboards</strong> in Looker, Power BI, and Excel integrating AP, forecasting, and sales metrics.</li>
-              <li><strong>Delivered predictive analytics</strong> and revenue pacing models that improved decision speed and forecast accuracy by double digits.</li>
-              <li><strong>Championed automation and GIS-based insights</strong> to support enterprise expansion and territory optimization.</li>
-            </ul>
-          </div>
-          <div class="card rounded-2xl p-5 md:p-6 bg-white">
-            <h3 class="font-semibold text-lg">Learning, Development & Brand Enablement</h3>
-            <ul class="mt-3 space-y-2 text-[15px] text-slate-600 list-disc list-inside">
-              <li><strong>Designed consultative sales and compliance programs</strong> that elevated productivity, retention, and sales performance.</li>
-              <li><strong>Launched certification frameworks</strong> that scaled training across 100+ employees, reducing onboarding time by 40%.</li>
-              <li><strong>Produced brand storytelling and voiceover content</strong> that strengthened culture, employer brand, and market perception.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="relative order-first md:order-none">
+      <div class="absolute -inset-3 -z-10 rounded-3xl bg-gradient-to-tr from-blue-100/40 to-transparent"></div>
+      <img src="mia-headshot.jpg" alt="Mia Lavana headshot" class="rounded-3xl w-full h-[380px] sm:h-[420px] md:h-[520px] object-cover shadow-2xl" fetchpriority="high" decoding="async"/>
+    </div>
+  </div>
+</section>
 
     <!-- Portfolio -->
     <section id="portfolio" class="py-16 md:py-20 bg-white">
       <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-2xl sm:text-3xl font-extrabold">Portfolio</h2>
-        <p class="text-slate-600 text-[15px] sm:text-base mt-2">A few representative projects.</p>
+        <p class="text-slate-600 text-[15px] sm:text-base mt-2">
+          Explore my interactive portfolio tools. These are free demos that showcase how I help businesses grow smarter. Pro versions add integrations, automation, and executive reporting.
+          <a href="#contact" class="text-blue-600 font-medium">Request a demo →</a>
+        </p>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <!-- Executive Sales Dashboards -->
           <article class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
-            <img
-              src="https://lets-viz.com/wp-content/uploads/2024/05/SPD-.png"
-              alt="Executive Sales Dashboards"
-              class="w-full h-44 object-cover"
-              loading="lazy"
-              decoding="async"
-            />
+            <img src="https://lets-viz.com/wp-content/uploads/2024/05/SPD-.png" alt="Executive Sales Dashboards" class="w-full h-44 object-cover" loading="lazy" decoding="async"/>
             <div class="p-6">
               <h3 class="font-semibold">Executive Sales Dashboards</h3>
-              <p class="mt-2 text-sm text-slate-600">
-                Make smarter moves faster with real-time revenue views and vendor insights that drive confident decisions.
-              </p>
+              <p class="mt-2 text-sm text-slate-600">Real-time revenue views and vendor insights that drive confident decisions.</p>
               <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">Request a demo →</a>
             </div>
           </article>
 
-          <!-- Consultative Sales & Compliance Training -->
           <article class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
-            <img
-              src="https://media.istockphoto.com/id/1588288383/photo/back-view-of-student-raising-his-hand-to-answer-teachers-question-during-education-training.jpg?s=612x612&w=0&k=20&c=ZSyPrLqe6WdE81WXiESD5AqIVw1a7hKv85UI5I-Vwco="
-              alt="Consultative Sales & Compliance Training"
-              class="w-full h-44 object-cover"
-              loading="lazy"
-              decoding="async"
-            />
+            <img src="https://media.istockphoto.com/id/1588288383/photo/back-view-of-student-raising-his-hand-to-answer-teachers-question-during-education-training.jpg?s=612x612&w=0&k=20&c=ZSyPrLqe6WdE81WXiESD5AqIVw1a7hKv85UI5I-Vwco=" alt="Consultative Sales & Compliance Training" class="w-full h-44 object-cover" loading="lazy" decoding="async"/>
             <div class="p-6">
               <h3 class="font-semibold">Consultative Sales & Compliance Training</h3>
-              <p class="mt-2 text-sm text-slate-600">
-                Fuel performance with frameworks that merge product mastery and consultative selling. Always sharp, always compliant.
-              </p>
+              <p class="mt-2 text-sm text-slate-600">Frameworks that merge product mastery and consultative selling.</p>
               <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">View syllabus →</a>
             </div>
           </article>
 
-          <!-- Brand & Go-to-Market -->
           <article class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden">
-            <img
-              src="https://hbr.org/resources/images/article_assets/2022/10/CRE3220_HBRAS_thumb.png"
-              alt="Brand & Go-to-Market"
-              class="w-full h-44 object-cover"
-              loading="lazy"
-              decoding="async"
-            />
+            <img src="https://hbr.org/resources/images/article_assets/2022/10/CRE3220_HBRAS_thumb.png" alt="Brand & Go-to-Market" class="w-full h-44 object-cover" loading="lazy" decoding="async"/>
             <div class="p-6">
               <h3 class="font-semibold">Brand & Go-to-Market</h3>
-              <p class="mt-2 text-sm text-slate-600">
-                Turn strategy into momentum with data-driven storytelling that builds brands people believe in.
-              </p>
+              <p class="mt-2 text-sm text-slate-600">Data-driven storytelling that builds brands people believe in.</p>
               <a href="#contact" class="inline-block mt-3 text-blue-600 font-medium">See case study →</a>
             </div>
           </article>
-
-          <!-- ✅ ROI Calculator (interactive card) -->
-          <article class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden md:col-span-3" id="roi-card">
-            <div class="p-6 md:p-8">
-              <div class="flex items-center justify-between flex-wrap gap-3">
-                <h3 class="font-semibold text-lg">ROI Calculator</h3>
-                <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
-                  <span class="h-2 w-2 rounded-full bg-green-500"></span> Live
-                </span>
-              </div>
-
-              <p class="mt-2 text-sm text-slate-600">
-                ROI = (G − C) ÷ C × 100, where G is expected gain and C is total cost. Total cost = Upfront + (Monthly × Months).
-              </p>
-
-              <div class="mt-5 grid grid-cols-1 md:grid-cols-4 gap-4">
-                <label class="block">
-                  <span class="text-sm font-medium">Expected Gain (G)</span>
-                  <input id="roi_gain" type="number" inputmode="decimal" placeholder="e.g. 10000"
-                         class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]" />
-                </label>
-
-                <label class="block">
-                  <span class="text-sm font-medium">Upfront Cost</span>
-                  <input id="roi_upfront" type="number" inputmode="decimal" placeholder="e.g. 6000"
-                         class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]" />
-                </label>
-
-                <label class="block">
-                  <span class="text-sm font-medium">Monthly Cost</span>
-                  <input id="roi_monthly" type="number" inputmode="decimal" placeholder="e.g. 25"
-                         class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]" />
-                </label>
-
-                <label class="block">
-                  <span class="text-sm font-medium">Months</span>
-                  <input id="roi_months" type="number" inputmode="numeric" placeholder="e.g. 12"
-                         class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:outline-none focus:ring-4 focus:ring-[var(--ring)]" />
-                </label>
-              </div>
-
-              <div class="mt-5">
-                <button type="button" id="roi_calc_btn" class="rounded-2xl bg-blue-600 px-5 py-2.5 text-white font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">
-                  Calculate ROI
-                </button>
-              </div>
-
-              <div id="roi_output" class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="rounded-2xl border border-slate-200 p-4">
-                  <div class="text-xs uppercase tracking-wider text-slate-500">Total Cost (C)</div>
-                  <div id="roi_total_cost" class="mt-1 text-2xl font-extrabold tabular-nums">$0.00</div>
-                </div>
-                <div class="rounded-2xl border border-slate-200 p-4">
-                  <div class="text-xs uppercase tracking-wider text-slate-500">ROI</div>
-                  <div id="roi_percent" class="mt-1 text-2xl font-extrabold tabular-nums">0.00%</div>
-                </div>
-                <div class="rounded-2xl border border-slate-200 p-4">
-                  <div class="text-xs uppercase tracking-wider text-slate-500">Signal</div>
-                  <div id="roi_signal" class="mt-1 inline-flex items-center gap-2 rounded-xl px-3 py-1.5 text-sm font-semibold border border-slate-300 text-slate-700 bg-white">
-                    Enter values to evaluate
-                  </div>
-                </div>
-              </div>
-
-              <details class="mt-6 group">
-                <summary class="cursor-pointer text-sm text-slate-600 group-open:text-slate-800 font-medium">Show calculation steps</summary>
-                <pre id="roi_steps" class="mt-3 bg-slate-50 rounded-xl p-4 text-[13px] overflow-x-auto border border-slate-200"></pre>
-              </details>
-            </div>
-          </article>
-          <!-- End ROI card -->
         </div>
       </div>
     </section>
 
-    <!-- Live Portfolio Impact (refined) -->
-<section id="live-portfolio-impact" class="relative overflow-hidden py-16 sm:py-20">
-  <div class="pointer-events-none absolute inset-0 -z-10">
-    <div class="absolute left-1/2 top-0 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-500/15 via-sky-400/10 to-blue-600/10 blur-3xl"></div>
-  </div>
-
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="mb-8 flex items-center gap-3">
-      <span class="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-sky-400 shadow-[0_0_18px_rgba(56,189,248,0.8)]"></span>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">Live Portfolio Impact</h2>
-    </div>
-
-    <div class="max-w-3xl mx-auto">
-      <div class="relative rounded-2xl border border-white/10 bg-slate-900/80 p-8 shadow-2xl backdrop-blur-md text-center">
-        <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10"></div>
-
-        <p class="mb-4 text-sm uppercase tracking-widest text-white/60">Cumulative Impact</p>
-
-        <!-- Counter (centered, animated) -->
-        <div class="live-counter text-4xl sm:text-5xl md:text-6xl font-extrabold tabular-nums tracking-tight text-white"
-             aria-live="polite"
-             data-start="120045320"
-             data-rate-per-day="45000"
-             data-decimals="2"
-             data-prefix="$"
-             data-suffix="">
-          $120,045,320.00
+    <!-- Tools / Calculators -->
+    <section id="tools" class="py-16 md:py-20 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="mb-6 flex items-center justify-between flex-wrap gap-3">
+          <h2 class="text-2xl sm:text-3xl font-extrabold">ROI & Forecast Calculators</h2>
+          <a href="#contact" class="inline-flex items-center rounded-2xl bg-slate-900 px-4 py-2.5 text-white font-semibold hover:bg-slate-800">Unlock Pro Version</a>
         </div>
 
-        <!-- Live badge with red blinking dot -->
-        <div class="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white/80">
-          <span class="inline-block h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
-          <span>Live</span>
-        </div>
+        <div class="grid grid-cols-1 gap-6">
+          <!-- ROI Calculator (above forecast) -->
+          <article class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden" id="roi-card">
+            <div class="p-6 md:p-8">
+              <h3 class="font-semibold text-lg">ROI Calculator</h3>
+              <p class="mt-2 text-sm text-slate-600">ROI = (G − C) ÷ C × 100, where G is expected gain and C is total cost. Total cost = Upfront + (Monthly × Months).</p>
 
-        <p class="mt-5 max-w-prose mx-auto text-sm leading-relaxed text-white/80">
-          All data reflects aggregated directional impact across current initiatives and projects.
-        </p>
+              <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <label class="block"><span class="text-sm font-medium label-one-line">Expected Gain (G)</span><input id="roi_gain" type="number" inputmode="decimal" placeholder="e.g. 10000" class="input"/></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Upfront Cost</span><input id="roi_upfront" type="number" inputmode="decimal" placeholder="e.g. 6000" class="input"/></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Monthly Cost</span><input id="roi_monthly" type="number" inputmode="decimal" placeholder="e.g. 25" class="input"/></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Months</span><input id="roi_months" type="number" inputmode="numeric" placeholder="e.g. 12" class="input"/></label>
+              </div>
 
-        <!-- micro legend (Method removed) -->
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-white/70">
-          <span class="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 ring-1 ring-white/10">Data source: internal aggregate</span>
+              <div class="mt-5"><button type="button" id="roi_calc_btn" class="rounded-2xl bg-blue-600 px-5 py-2.5 text-white font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">Calculate ROI</button></div>
+
+              <div id="roi_output" class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Total Cost (C)</div><div id="roi_total_cost" class="mt-1 text-2xl font-extrabold tabular-nums">$0.00</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">ROI</div><div id="roi_percent" class="mt-1 text-2xl font-extrabold tabular-nums">0.00%</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Signal</div><div id="roi_signal" class="mt-1 inline-flex items-center gap-2 rounded-xl px-3 py-1.5 text-sm font-semibold border border-slate-300 text-slate-700 bg-white">Enter values to evaluate</div></div>
+              </div>
+
+              <details class="mt-6 group"><summary class="cursor-pointer text-sm text-slate-600 group-open:text-slate-800 font-medium">Show calculation steps</summary><pre id="roi_steps" class="mt-3 bg-slate-50 rounded-xl p-4 text-[13px] overflow-x-auto border border-slate-200"></pre></details>
+            </div>
+          </article>
+
+          <!-- Retail Sales Forecast Calculator -->
+          <article class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden" id="forecast-card">
+            <div class="p-6 md:p-8">
+              <h3 class="font-semibold text-lg">Retail Sales Forecast Calculator</h3>
+              <p class="mt-2 text-sm text-slate-600">Project today’s totals using your current velocity. Enter open time, current time, close time, and today’s sales and transactions.</p>
+
+              <!-- Aligned inputs with optional target -->
+              <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4">
+                <label class="block"><span class="text-sm font-medium label-one-line">Open time</span><input id="sf_open" type="time" value="09:00" class="input"/></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Current time</span><input id="sf_now" type="time" class="input"/></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Close time</span><input id="sf_close" type="time" value="21:00" class="input"/></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Current sales ($)</span><input id="sf_sales" type="number" inputmode="decimal" placeholder="e.g. 306446.64" class="input"/></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Current transactions</span><input id="sf_tx" type="number" inputmode="numeric" placeholder="e.g. 5459" class="input"/></label>
+                <label class="block">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium label-one-line">Daily target ($)</span>
+                    <span class="text-xs text-slate-500">(optional)</span>
+                  </div>
+                  <input id="sf_target" type="number" inputmode="decimal" placeholder="e.g. 40000" class="input"/>
+                </label>
+              </div>
+
+              <div class="mt-5 flex flex-wrap items-center gap-3">
+                <button type="button" id="sf_calc_btn" class="rounded-2xl bg-blue-600 px-5 py-2.5 text-white font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">Forecast day</button>
+                <button type="button" id="sf_now_btn" class="rounded-2xl border border-slate-300 px-5 py-2.5 font-semibold hover:border-slate-400">Use current local time</button>
+              </div>
+
+              <div id="sf_output" class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Elapsed hours</div><div id="sf_elapsed" class="mt-1 text-2xl font-extrabold tabular-nums">0.00</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Remaining hours</div><div id="sf_remaining" class="mt-1 text-2xl font-extrabold tabular-nums">0.00</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Avg ticket</div><div id="sf_avg_ticket" class="mt-1 text-2xl font-extrabold tabular-nums">$0.00</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Tx per hour</div><div id="sf_tph" class="mt-1 text-2xl font-extrabold tabular-nums">0.00</div></div>
+              </div>
+
+              <div id="sf_output2" class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Projected transactions</div><div id="sf_proj_tx" class="mt-1 text-2xl font-extrabold tabular-nums">0</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Projected sales</div><div id="sf_proj_sales" class="mt-1 text-2xl font-extrabold tabular-nums">$0.00</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4">
+                  <div class="text-xs uppercase tracking-wider text-slate-500">Guidance</div>
+                  <div id="sf_note_wrap" class="mt-1 rounded-xl px-3 py-2 text-sm font-semibold bg-gray-50 text-gray-700">
+                    <span id="sf_note">Enter values to evaluate</span>
+                  </div>
+                </div>
+              </div>
+
+              <div id="sf_goal_wrap" class="mt-4 hidden">
+                <div class="flex items-center justify-between text-xs text-slate-600 mb-1">
+                  <span>Goal progress</span><span id="sf_goal_pct">0%</span>
+                </div>
+                <div class="h-2 w-full rounded-full bg-slate-100"><div id="sf_goal_bar" class="h-2 rounded-full bg-slate-900" style="width:0%"></div></div>
+                <div class="mt-2 text-xs text-slate-500" id="sf_gap_line">Gap to goal: —</div>
+              </div>
+
+              <details class="mt-6 group"><summary class="cursor-pointer text-sm text-slate-600 group-open:text-slate-800 font-medium">Show calculation steps</summary><pre id="sf_steps" class="mt-3 bg-slate-50 rounded-xl p-4 text-[13px] overflow-x-auto border border-slate-200"></pre></details>
+            </div>
+          </article>
+
+          <!-- Three-Point Estimating (PERT/Triangular) -->
+          <!-- Three-Point Estimating (PERT/Triangular) -->
+          <article class="rounded-2xl bg-white border border-slate-200 shadow-sm overflow-hidden" id="tpe-card">
+            <div class="p-6 md:p-8">
+              <div class="flex items-center justify-between flex-wrap gap-3">
+                <h3 class="font-semibold text-lg">Time Estimation: Three-Point (PERT)</h3>
+              </div>
+              <p class="mt-2 text-sm text-slate-700">
+                Not sure how long something will really take? PERT helps you make a smart estimate by considering
+                <strong>best case</strong> (Optimistic), <strong>most likely</strong>, and <strong>worst case</strong> (Pessimistic).
+                You’ll get a realistic plan number and a range you can share with your team.
+              </p>
+
+              <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+                <label class="block"><span class="text-sm font-medium label-one-line">Optimistic (O)</span><input id="tpe_o" type="number" inputmode="decimal" placeholder="e.g. 3" class="input"><p class="mt-1 text-xs text-slate-500">Best case (everything goes right)</p></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Most likely (M)</span><input id="tpe_m" type="number" inputmode="decimal" placeholder="e.g. 5" class="input"><p class="mt-1 text-xs text-slate-500">Your honest expectation</p></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Pessimistic (P)</span><input id="tpe_p" type="number" inputmode="decimal" placeholder="e.g. 10" class="input"><p class="mt-1 text-xs text-slate-500">Worst case (delays, blockers)</p></label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Units</span>
+                  <select id="tpe_unit" class="input"><option value="days">Days</option><option value="hours" selected>Hours</option></select>
+                  <p class="mt-1 text-xs text-slate-500">Choose the time unit for O/M/P</p>
+                </label>
+                <label class="block"><span class="text-sm font-medium label-one-line">Method</span>
+                  <select id="tpe_method" class="input"><option value="pert" selected>PERT (weighted)</option><option value="triangular">Triangular (simple average)</option></select>
+                  <p class="mt-1 text-xs text-slate-500">PERT weights M (4×). Triangular averages O/M/P equally.</p>
+                </label>
+              </div>
+
+              <div class="mt-3 flex flex-wrap items-center gap-2">
+                <span class="text-xs text-slate-500">Quick risk:</span>
+                <button type="button" class="rounded-xl border border-slate-300 px-3 py-1.5 text-sm" data-risk="low">Low</button>
+                <button type="button" class="rounded-xl border border-slate-300 px-3 py-1.5 text-sm" data-risk="med">Med</button>
+                <button type="button" class="rounded-xl border border-slate-300 px-3 py-1.5 text-sm" data-risk="high">High</button>
+              </div>
+
+              <div class="mt-5"><button type="button" id="tpe_calc_btn" class="rounded-2xl bg-blue-600 px-5 py-2.5 text-white font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">Estimate time</button></div>
+
+              <div id="tpe_output" class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Expected (E)</div><div id="tpe_e" class="mt-1 text-2xl font-extrabold tabular-nums">0.00</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Std. deviation</div><div id="tpe_sd" class="mt-1 text-2xl font-extrabold tabular-nums">0.00</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">90% range</div><div id="tpe_ci" class="mt-1 text-2xl font-extrabold tabular-nums">0.00–0.00</div></div>
+                <div class="rounded-2xl border border-slate-200 p-4"><div class="text-xs uppercase tracking-wider text-slate-500">Signal</div><div id="tpe_signal" class="mt-1 text-sm font-semibold text-slate-700">Enter values to evaluate</div></div>
+              </div>
+
+              <p class="mt-3 text-xs text-slate-500">We’ll calculate your expected time and a 90% range so you can set a realistic plan and buffer.</p>
+              <div class="mt-2 rounded-xl border border-slate-200 p-3 bg-slate-50 flex items-start justify-between gap-3">
+                <div id="tpe_summary" class="text-sm text-slate-700">Enter O/M/P to see an easy summary.</div>
+                <button id="tpe_copy" type="button" class="shrink-0 rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs">Copy</button>
+              </div>
+
+              <details class="mt-6 group"><summary class="cursor-pointer text-sm text-slate-600 group-open:text-slate-800 font-medium">Show calculation steps</summary><pre id="tpe_steps" class="mt-3 bg-slate-50 rounded-xl p-4 text-[13px] overflow-x-auto border border-slate-200"></pre></details>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+
+    <!-- Live Portfolio Impact -->
+    <section id="live-portfolio-impact" class="relative overflow-hidden py-16 sm:py-20">
+      <div class="pointer-events-none absolute inset-0 -z-10">
+        <!-- Blue glass only; red is reserved for the dot -->
+        <div class="absolute left-1/2 top-0 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-sky-400/15 via-cyan-400/10 to-blue-600/10 blur-3xl"></div>
+      </div>
+
+      <div class="mx-auto max-w-6xl px-6">
+        <div class="mb-8 flex items-center gap-3">
+          <span class="inline-block h-2.5 w-2.5 animate-pulse rounded-full bg-red-500 shadow-[0_0_18px_rgba(239,68,68,0.8)]"></span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">Live Portfolio Impact</h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="relative rounded-2xl border border-white/10 bg-slate-900/80 p-8 shadow-2xl backdrop-blur-md text-center">
+            <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10"></div>
+
+            <p class="mb-4 text-sm uppercase tracking-widest text-white/60">Cumulative Impact</p>
+
+            <!-- Adds $45,000 per day continuously -->
+            <div class="live-counter text-4xl sm:text-5xl md:text-6xl font-extrabold tabular-nums tracking-tight text-white"
+                 aria-live="polite"
+                 data-base="120045320"
+                 data-start-date="2025-01-01"
+                 data-rate-per-day="45000"
+                 data-decimals="2"
+                 data-prefix="$">
+              $120,045,320.00
+            </div>
+
+            <p class="mt-5 max-w-prose mx-auto text-sm leading-relaxed text-white/80">
+              All data reflects aggregated directional impact across current initiatives and projects.
+            </p>
+
+            <div class="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-white/70">
+              <span class="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 ring-1 ring-white/10">Data source: internal aggregate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Contact -->
     <section id="contact" class="py-16 md:py-20 bg-slate-50">
@@ -341,18 +334,18 @@
         <p class="mt-3 text-slate-600">Email <a class="text-blue-600 font-medium" href="mailto:contact@mialavana.com">contact@mialavana.com</a> or drop a line below.</p>
         <form class="mt-8 grid gap-4 text-left" action="#" method="post">
           <label class="sr-only" for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Name" autocomplete="name" inputmode="text" class="w-full rounded-xl border border-slate-300 px-4 py-3 min-h-[48px] focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">
+          <input id="name" name="name" type="text" placeholder="Name" autocomplete="name" inputmode="text" class="input">
           <label class="sr-only" for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" class="w-full rounded-xl border border-slate-300 px-4 py-3 min-h-[48px] focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">
+          <input id="email" name="email" type="email" placeholder="Email" autocomplete="email" inputmode="email" class="input">
           <label class="sr-only" for="message">Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Message" class="w-full rounded-xl border border-slate-300 px-4 py-3 min-h-[48px] focus:outline-none focus:ring-4 focus:ring-[var(--ring)]"></textarea>
+          <textarea id="message" name="message" rows="4" placeholder="Message" class="input"></textarea>
           <button type="button" class="rounded-2xl bg-blue-600 px-6 py-3 text-white font-semibold shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-[var(--ring)]">Send</button>
         </form>
         <p class="mt-4 text-sm text-slate-500">Or connect on <a class="text-blue-600" href="https://www.linkedin.com/">LinkedIn</a> • <a class="text-blue-600" href="https://github.com/">GitHub</a> • <a class="text-blue-600" href="https://www.instagram.com/">Instagram</a></p>
       </div>
     </section>
 
-    <!-- Testimonials (single-card carousel) -->
+    <!-- Testimonials -->
     <section id="testimonials" class="py-16 md:py-20 bg-white">
       <div class="mx-auto max-w-4xl px-4">
         <div class="flex items-end justify-between gap-4">
@@ -363,7 +356,6 @@
           </div>
         </div>
 
-        <!-- Single card holder -->
         <div class="mt-6">
           <figure id="testCard" class="card rounded-2xl bg-white p-6 md:p-8">
             <blockquote id="testQuote" class="text-slate-700 text-[15px] md:text-base leading-relaxed"></blockquote>
@@ -375,8 +367,6 @@
               </div>
             </figcaption>
           </figure>
-
-          <!-- Dots -->
           <div class="mt-5 flex items-center justify-center gap-2" id="testDots" aria-label="testimonial pagination"></div>
         </div>
 
@@ -392,6 +382,7 @@
     <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur border-t border-slate-200">
       <div class="mx-auto max-w-6xl px-4 py-2 flex items-center gap-3" style="padding-bottom: calc(env(safe-area-inset-bottom) + 8px);">
         <a href="#portfolio" class="flex-1 inline-flex items-center justify-center rounded-2xl border border-slate-300 px-4 py-3 font-semibold">Portfolio</a>
+        <a href="#tools" class="flex-1 inline-flex items-center justify-center rounded-2xl border border-slate-300 px-4 py-3 font-semibold">Tools</a>
         <a href="#contact" class="flex-1 inline-flex items-center justify-center rounded-2xl bg-blue-600 px-4 py-3 text-white font-semibold shadow-md">Contact</a>
       </div>
     </div>
@@ -402,160 +393,118 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Mobile menu toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', () => {
-        const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+    (function(){
+      var menuBtn = document.getElementById('menuBtn');
+      var mobileMenu = document.getElementById('mobileMenu');
+      if (!menuBtn || !mobileMenu) return;
+      menuBtn.addEventListener('click', function(){
+        var expanded = menuBtn.getAttribute('aria-expanded') === 'true';
         menuBtn.setAttribute('aria-expanded', String(!expanded));
         mobileMenu.classList.toggle('hidden');
       });
-      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      }));
-    }
-
-    // --- Testimonials: single-card carousel ---
-    const testimonials = [
-      {
-        quote: "“Mia, to me, represents 'Mamba Mentality.' We equate those who think, or perhaps, not the most vocal, as a weakness. As the Black Mamba, she knows when to go in and say the things that need to be told. When you combine her acumen to lean in with compassion, it's a deadly mix of effectiveness + execution.”",
-        name: "Mike Kim",
-        title: "Founder & Creative Director, Some Near Place",
-        avatar: "https://media.licdn.com/dms/image/v2/D4D03AQHv-Si9Nox4yA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1664979704907?e=1762992000&v=beta&t=3W69JupXZ784QtXyBqs4_5vsWOIFh4eyt3aZofCZuoY"
-      },
-      {
-        quote: "“Mia is highly skilled at managing and studying metrics data to determine ROI across campaigns and to identify opportunities for improvement. Her marketing analytics gave us profound insight into customer preferences and trends. A pleasure to work with—her natural ability to get along with everyone was a great asset to our company.”",
-        name: "Ken Weigel",
-        title: "CEO, ABC Office Systems",
-        avatar: "https://media.licdn.com/dms/image/v2/C5603AQHV_Xx45FLl1A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1553569009695?e=1762992000&v=beta&t=FbS9-2xHaIAJbUklMofFtfsIWIjSmEP2sUaLg1qTOm0"
-      },
-      {
-        quote: "“Her positivity and encouragement are always radiant! I highly recommend Mia and would work with her again.”",
-        name: "Rich Yueh, Ph.D.",
-        title: "Founder, UCR Nexus Studio",
-        avatar: "https://media.licdn.com/dms/image/v2/D5603AQGIgs0s2QQmPA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1671405648792?e=1762992000&v=beta&t=rtaNC7KAkNB9Q1C8vCvxgzRTNKVkrY57Nn02Xp7eBcA"
-      }
-    ];
-
-    const testCard = document.getElementById('testCard');
-    const testQuote = document.getElementById('testQuote');
-    const testAvatar = document.getElementById('testAvatar');
-    const testName = document.getElementById('testName');
-    const testTitle = document.getElementById('testTitle');
-    const testDots = document.getElementById('testDots');
-    const prevBtn = document.getElementById('prevTest');
-    const nextBtn = document.getElementById('nextTest');
-
-    let idx = 0, autoTimer;
-
-    function render(i) {
-      const t = testimonials[i];
-      testQuote.textContent = t.quote;
-      testAvatar.src = t.avatar;
-      testAvatar.alt = t.name;
-      testName.textContent = t.name;
-      testTitle.textContent = t.title;
-
-      testDots.innerHTML = "";
-      testimonials.forEach((_, di) => {
-        const b = document.createElement('button');
-        b.className = 'dot';
-        b.setAttribute('aria-label', `Go to testimonial ${di + 1}`);
-        if (di === i) b.classList.add('bg-slate-700', 'border-slate-700');
-        b.addEventListener('click', () => { idx = di; render(idx); restartAuto(); });
-        testDots.appendChild(b);
+      Array.prototype.forEach.call(mobileMenu.querySelectorAll('a'), function(a){
+        a.addEventListener('click', function(){
+          mobileMenu.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
       });
-    }
-
-    function next() { idx = (idx + 1) % testimonials.length; render(idx); }
-    function prev() { idx = (idx - 1 + testimonials.length) % testimonials.length; render(idx); }
-
-    function startAuto() { stopAuto(); autoTimer = setInterval(() => next(), 6000); }
-    function stopAuto() { if (autoTimer) clearInterval(autoTimer); }
-    function restartAuto() { stopAuto(); startAuto(); }
-
-    ['mouseenter','focusin','touchstart','pointerdown'].forEach(evt => testCard.addEventListener(evt, stopAuto, {passive:true}));
-    ['mouseleave','focusout','touchend','pointerup'].forEach(evt => testCard.addEventListener(evt, startAuto, {passive:true}));
-
-    testCard.setAttribute('tabindex', '0');
-    testCard.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') { next(); restartAuto(); }
-      if (e.key === 'ArrowLeft') { prev(); restartAuto(); }
-    });
-
-    // simple swipe
-    let startX = null;
-    testCard.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive:true});
-    testCard.addEventListener('touchend', (e) => {
-      if (startX === null) return;
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); restartAuto(); }
-      startX = null;
-    }, {passive:true});
-
-    prevBtn?.addEventListener('click', () => { prev(); restartAuto(); });
-    nextBtn?.addEventListener('click', () => { next(); restartAuto(); });
-
-    render(idx);
-    startAuto();
-
-    // ===== Live Counter Script (vanilla JS) =====
-    (function() {
-      const el = document.querySelector('#live-portfolio-impact .live-counter');
-      if (!el) return;
-
-      const startValue = Number(el.getAttribute('data-start') || '0');
-      const ratePerDay = Number(el.getAttribute('data-rate-per-day') || '0');
-      const decimals = Number(el.getAttribute('data-decimals') || '2');
-      const prefix = el.getAttribute('data-prefix') ?? '';
-      const suffix = el.getAttribute('data-suffix') ?? '';
-
-      // derive per-second increment
-      const perSecond = ratePerDay / 86400; // 24*60*60
-
-      let startTs = performance.now();
-      let startAmount = startValue;
-
-      const nf = new Intl.NumberFormat(undefined, {
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals
-      });
-
-      function renderAmt(amount) {
-        el.textContent = `${prefix}${nf.format(amount)}${suffix ? ' ' + suffix : ''}`;
-      }
-
-      function tick(ts) {
-        const elapsed = (ts - startTs) / 1000; // seconds
-        const amount = startAmount + elapsed * perSecond;
-        renderAmt(amount);
-        requestAnimationFrame(tick);
-      }
-
-      renderAmt(startAmount);
-      requestAnimationFrame(tick);
     })();
 
-    // ===== ROI Calculator (minimal, no resets) =====
+    // --- Testimonials carousel ---
     (function(){
-      const $ = (id) => document.getElementById(id);
-      const nfMoney = new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
-      const nfPct = new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      var testimonials = [
+        { quote: "“Mia, to me, represents 'Mamba Mentality.' ... a deadly mix of effectiveness + execution.”", name: "Mike Kim", title: "Founder & Creative Director, Some Near Place", avatar: "https://media.licdn.com/dms/image/v2/D4D03AQHv-Si9Nox4yA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1664979704907?e=1762992000&v=beta&t=3W69JupXZ784QtXyBqs4_5vsWOIFh4eyt3aZofCZuoY" },
+        { quote: "“Mia is highly skilled at managing and studying metrics data to determine ROI across campaigns ...”", name: "Ken Weigel", title: "CEO, ABC Office Systems", avatar: "https://media.licdn.com/dms/image/v2/C5603AQHV_Xx45FLl1A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1553569009695?e=1762992000&v=beta&t=FbS9-2xHaIAJbUklMofFtfsIWIjSmEP2sUaLg1qTOm0" },
+        { quote: "“Her positivity and encouragement are always radiant! I highly recommend Mia and would work with her again.”", name: "Rich Yueh, Ph.D.", title: "Founder, UCR Nexus Studio", avatar: "https://media.licdn.com/dms/image/v2/D5603AQGIgs0s2QQmPA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1671405648792?e=1762992000&v=beta&t=rtaNC7KAkNB9Q1C8vCvxgzRTNKVkrY57Nn02Xp7eBcA" }
+      ];
+      var testCard = document.getElementById('testCard');
+      var testQuote = document.getElementById('testQuote');
+      var testAvatar = document.getElementById('testAvatar');
+      var testName = document.getElementById('testName');
+      var testTitle = document.getElementById('testTitle');
+      var testDots = document.getElementById('testDots');
+      var prevBtn = document.getElementById('prevTest');
+      var nextBtn = document.getElementById('nextTest');
+      var idx = 0, autoTimer;
+
+      function render(i){
+        var t = testimonials[i];
+        testQuote.textContent = t.quote; testAvatar.src = t.avatar; testAvatar.alt = t.name;
+        testName.textContent = t.name; testTitle.textContent = t.title;
+        testDots.innerHTML = '';
+        testimonials.forEach(function(_, di){
+          var b = document.createElement('button'); b.className = 'dot';
+          b.setAttribute('aria-label','Go to testimonial ' + (di+1));
+          if (di === i) b.classList.add('bg-slate-700','border-slate-700');
+          b.addEventListener('click', function(){ idx = di; render(idx); restartAuto(); });
+          testDots.appendChild(b);
+        });
+      }
+      function next(){ idx = (idx + 1) % testimonials.length; render(idx); }
+      function prev(){ idx = (idx - 1 + testimonials.length) % testimonials.length; render(idx); }
+      function startAuto(){ stopAuto(); autoTimer = setInterval(next, 6000); }
+      function stopAuto(){ if (autoTimer) clearInterval(autoTimer); }
+      function restartAuto(){ stopAuto(); startAuto(); }
+
+      ['mouseenter','focusin','touchstart','pointerdown'].forEach(function(evt){ testCard.addEventListener(evt, stopAuto, {passive:true}); });
+      ['mouseleave','focusout','touchend','pointerup'].forEach(function(evt){ testCard.addEventListener(evt, startAuto, {passive:true}); });
+      testCard.setAttribute('tabindex','0');
+      testCard.addEventListener('keydown', function(e){ if(e.key==='ArrowRight'){ next(); restartAuto(); } if(e.key==='ArrowLeft'){ prev(); restartAuto(); } });
+      var startX=null;
+      testCard.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+      testCard.addEventListener('touchend', function(e){
+        if (startX===null) return; var dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) { dx<0 ? next() : prev(); restartAuto(); } startX=null;
+      }, {passive:true});
+      if (prevBtn) prevBtn.addEventListener('click', function(){ prev(); restartAuto(); });
+      if (nextBtn) nextBtn.addEventListener('click', function(){ next(); restartAuto(); });
+      render(idx); startAuto();
+    })();
+
+    // ===== Live Counter Script (adds $45k/day continuously) =====
+    (function() {
+      var el = document.querySelector('#live-portfolio-impact .live-counter');
+      if (!el) return;
+      var base = Number(el.getAttribute('data-base') || '0');
+      var startDateStr = el.getAttribute('data-start-date') || '2025-01-01';
+      var ratePerDay = Number(el.getAttribute('data-rate-per-day') || '45000');
+      var decimals = Number(el.getAttribute('data-decimals') || '2');
+      var prefix = el.getAttribute('data-prefix') || '';
+      var nf = new Intl.NumberFormat(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+
+      function computeNowValue(){
+        var now = new Date();
+        var todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        var parts = startDateStr.split('-').map(Number);
+        var epoch = new Date(parts[0], parts[1]-1, parts[2]);
+        var msPerDay = 24*60*60*1000;
+        var fullDays = Math.floor((todayStart - epoch) / msPerDay);
+        var fractionToday = (now - todayStart) / msPerDay;
+        return base + (fullDays * ratePerDay) + (fractionToday * ratePerDay);
+      }
+      function render(){ el.textContent = prefix + nf.format(computeNowValue()); requestAnimationFrame(render); }
+      render();
+    })();
+
+    // ===== ROI Calculator =====
+    (function(){
+      var nfMoney = new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+      var nfPct = new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      function $(id){ return document.getElementById(id); }
 
       function setSignal(text, classes) {
-        const el = $('roi_signal');
+        var el = $('roi_signal');
         el.className = 'mt-1 inline-flex items-center gap-2 rounded-xl px-3 py-1.5 text-sm font-semibold border ' + classes;
         el.textContent = text;
       }
 
       function calc() {
-        const G = Number($('roi_gain')?.value || 0);
-        const upfront = Number($('roi_upfront')?.value || 0);
-        const monthly = Number($('roi_monthly')?.value || 0);
-        const months = Number($('roi_months')?.value || 0);
+        var G = Number(($('roi_gain')||{}).value || 0);
+        var upfront = Number(($('roi_upfront')||{}).value || 0);
+        var monthly = Number(($('roi_monthly')||{}).value || 0);
+        var months = Number(($('roi_months')||{}).value || 0);
 
-        const totalCost = upfront + (monthly * months);
+        var totalCost = upfront + (monthly * months);
         $('roi_total_cost').textContent = nfMoney.format(totalCost);
 
         if (!G || !totalCost || totalCost <= 0) {
@@ -565,42 +514,226 @@
           return;
         }
 
-        const roi = ((G - totalCost) / totalCost) * 100;
+        var roi = ((G - totalCost) / totalCost) * 100;
         $('roi_percent').textContent = nfPct.format(roi) + '%';
 
         if (roi >= 10) setSignal('Strong ROI', 'border-green-200 text-green-800 bg-green-50');
         else if (roi >= 0) setSignal('Positive ROI', 'border-emerald-200 text-emerald-800 bg-emerald-50');
         else setSignal('Negative ROI', 'border-rose-200 text-rose-800 bg-rose-50');
 
-        const steps = [
-          `Inputs: G = ${nfMoney.format(G)}, Upfront = ${nfMoney.format(upfront)}, Monthly = ${nfMoney.format(monthly)}, Months = ${months}`,
-          `Total Cost C = Upfront + (Monthly × Months) = ${nfMoney.format(upfront)} + (${nfMoney.format(monthly)} × ${months}) = ${nfMoney.format(totalCost)}`,
-          `ROI = (G − C) ÷ C × 100 = (${nfMoney.format(G)} − ${nfMoney.format(totalCost)}) ÷ ${nfMoney.format(totalCost)} × 100`,
-          `ROI = ${nfPct.format(roi)}%`
+        var steps = [
+          'Inputs: G = ' + nfMoney.format(G) + ', Upfront = ' + nfMoney.format(upfront) + ', Monthly = ' + nfMoney.format(monthly) + ', Months = ' + months,
+          'Total Cost C = Upfront + (Monthly × Months) = ' + nfMoney.format(upfront) + ' + (' + nfMoney.format(monthly) + ' × ' + months + ') = ' + nfMoney.format(totalCost),
+          'ROI = (G − C) ÷ C × 100 = (' + nfMoney.format(G) + ' − ' + nfMoney.format(totalCost) + ') ÷ ' + nfMoney.format(totalCost) + ' × 100',
+          'ROI = ' + nfPct.format(roi) + '%'
         ].join('\n');
         $('roi_steps').textContent = steps;
       }
 
-      // Bind calculate button
-      $('roi_calc_btn')?.addEventListener('click', calc);
-
-      // Calculate on Enter and on blur for smooth UX
-      ['roi_gain','roi_upfront','roi_monthly','roi_months'].forEach(id => {
-        const el = $(id);
-        if (!el) return;
-        el.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); calc(); } });
-        el.addEventListener('blur', calc);
+      var btn = document.getElementById('roi_calc_btn');
+      if (btn) btn.addEventListener('click', calc);
+      ['roi_gain','roi_upfront','roi_monthly','roi_months'].forEach(function(id){
+        var el = document.getElementById(id); if (!el) return;
+        ['input','change','blur','keydown'].forEach(function(evt){
+          el.addEventListener(evt, function(e){ if(e.key==='Enter'){ e.preventDefault(); } calc(); });
+        });
       });
 
-      // Optional demo values so visitors see it working immediately — delete if you don’t want defaults.
       if ($('roi_gain')) {
-        $('roi_gain').value = 10000;
-        $('roi_upfront').value = 6000;
-        $('roi_monthly').value = 25;
-        $('roi_months').value = 12;
-        calc();
+        $('roi_gain').value = 10000; $('roi_upfront').value = 6000; $('roi_monthly').value = 25; $('roi_months').value = 12; calc();
       }
     })();
+
+    // ===== Retail Sales Forecast (with target & dynamic guidance) =====
+    (function(){
+      var nfMoney = new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+      var nfNum = new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      function $(id){ return document.getElementById(id); }
+      function toMinutes(t){ if (!t) return null; var a=t.split(':'); return Number(a[0])*60 + Number(a[1]); }
+
+      function ensureNowIfEmpty() {
+        var nowEl = $('sf_now'); if (!nowEl.value) {
+          var now = new Date(); var hh = String(now.getHours()).padStart(2,'0'); var mm = String(now.getMinutes()).padStart(2,'0');
+          nowEl.value = hh + ':' + mm;
+        }
+      }
+
+      function calc() {
+        ensureNowIfEmpty();
+
+        var openM = toMinutes($('sf_open').value);
+        var nowM = toMinutes($('sf_now').value);
+        var closeM = toMinutes($('sf_close').value);
+        var sales = Number($('sf_sales').value || 0);
+        var tx = Number($('sf_tx').value || 0);
+        var target = Number($('sf_target').value || 0);
+
+        if (openM == null || nowM == null || closeM == null || !sales || !tx || nowM <= openM || closeM <= nowM) {
+          $('sf_elapsed').textContent = '0.00'; $('sf_remaining').textContent = '0.00';
+          $('sf_avg_ticket').textContent = nfMoney.format(0); $('sf_tph').textContent = '0.00';
+          $('sf_proj_tx').textContent = '0'; $('sf_proj_sales').textContent = nfMoney.format(0);
+          $('sf_note').textContent = 'Enter valid times and values';
+          $('sf_note_wrap').className = 'mt-1 rounded-xl px-3 py-2 text-sm font-semibold bg-gray-50 text-gray-700';
+          $('sf_goal_wrap').classList.add('hidden'); $('sf_steps').textContent = ''; return;
+        }
+
+        var elapsedH = (nowM - openM) / 60;
+        var remainingH = (closeM - nowM) / 60;
+        var avgTicket = sales / tx;
+        var tph = tx / Math.max(elapsedH, 0.01);
+        var addTx = tph * remainingH;
+        var projTx = Math.round(tx + addTx);
+        var projSales = sales + avgTicket * addTx;
+
+        $('sf_elapsed').textContent = nfNum.format(elapsedH);
+        $('sf_remaining').textContent = nfNum.format(remainingH);
+        $('sf_avg_ticket').textContent = nfMoney.format(avgTicket);
+        $('sf_tph').textContent = nfNum.format(tph);
+        $('sf_proj_tx').textContent = String(projTx);
+        $('sf_proj_sales').textContent = nfMoney.format(projSales);
+
+        if (target > 0) {
+          var projectedProgress = (projSales / target) * 100;
+          var gapToGoal = target - projSales;
+          var requiredTPH = Math.max(0, (target - sales) / (avgTicket || 1) / (remainingH || 1));
+          var progressPct = Math.max(0, Math.min(100, (sales / target) * 100));
+
+          $('sf_goal_wrap').classList.remove('hidden');
+          $('sf_goal_pct').textContent = progressPct.toFixed(1) + '%';
+          $('sf_goal_bar').style.width = progressPct + '%';
+          $('sf_gap_line').textContent = 'Gap to goal: ' + (gapToGoal >= 0 ? nfMoney.format(gapToGoal) : '+' + nfMoney.format(Math.abs(gapToGoal))) + (requiredTPH > 0 ? ' • Required pace: ' + requiredTPH.toFixed(1) + ' tx/hr' : '');
+
+          var noteText = ''; var classes = 'mt-1 rounded-xl px-3 py-2 text-sm font-semibold ';
+          if (projectedProgress < 90) { noteText = '⚠️ Pacing below goal. Need about ' + requiredTPH.toFixed(1) + ' tx/hr to close the gap.'; classes += 'bg-amber-50 text-amber-800'; }
+          else if (projectedProgress < 100) { noteText = '✅ On pace to reach ' + projectedProgress.toFixed(1) + '% of goal. Keep momentum.'; classes += 'bg-blue-50 text-blue-800'; }
+          else { noteText = '🚀 Forecasting ' + projectedProgress.toFixed(1) + '% of goal — trending ahead by ' + nfMoney.format(Math.abs(gapToGoal)) + '.'; classes += 'bg-emerald-50 text-emerald-800'; }
+          $('sf_note').textContent = noteText; $('sf_note_wrap').className = classes;
+        } else {
+          $('sf_goal_wrap').classList.add('hidden');
+          $('sf_note').textContent = 'Accuracy improves as more data is collected throughout the day.';
+          $('sf_note_wrap').className = 'mt-1 rounded-xl px-3 py-2 text-sm font-semibold bg-gray-50 text-gray-700';
+        }
+
+        var steps = [
+          'Elapsed hours = (Now − Open) = ' + nfNum.format(elapsedH),
+          'Remaining hours = (Close − Now) = ' + nfNum.format(remainingH),
+          'Avg ticket = Sales ÷ Transactions = ' + nfMoney.format(sales) + ' ÷ ' + tx + ' = ' + nfMoney.format(avgTicket),
+          'Transactions/hour = Transactions ÷ Elapsed hours = ' + tx + ' ÷ ' + nfNum.format(elapsedH) + ' = ' + nfNum.format(tph),
+          'Projected additional transactions = TPH × Remaining hours = ' + nfNum.format(tph) + ' × ' + nfNum.format(remainingH) + ' = ' + nfNum.format(addTx),
+          'Projected total transactions ≈ ' + projTx,
+          'Projected sales = ' + nfMoney.format(sales) + ' + ' + nfMoney.format(avgTicket) + ' × ' + nfNum.format(addTx) + ' = ' + nfMoney.format(projSales)
+        ].join('\n');
+        $('sf_steps').textContent = steps;
+      }
+
+      ['sf_open','sf_now','sf_close','sf_sales','sf_tx','sf_target'].forEach(function(id){
+        var el = document.getElementById(id); if (!el) return;
+        ['input','change','blur','keydown'].forEach(function(evt){
+          el.addEventListener(evt, function(e){ if(e.key==='Enter'){ e.preventDefault(); } calc(); });
+        });
+      });
+
+      var fBtn = document.getElementById('sf_calc_btn'); if (fBtn) fBtn.addEventListener('click', calc);
+      var nowBtn = document.getElementById('sf_now_btn'); if (nowBtn) nowBtn.addEventListener('click', function(){
+        var now = new Date(); var hh = String(now.getHours()).padStart(2,'0'); var mm = String(now.getMinutes()).padStart(2,'0');
+        document.getElementById('sf_now').value = hh + ':' + mm; calc();
+      });
+
+      // initialize current time once
+      (function initNow(){
+        var now = new Date(); var hh = String(now.getHours()).padStart(2,'0'); var mm = String(now.getMinutes()).padStart(2,'0');
+        document.getElementById('sf_now').value = hh + ':' + mm;
+      })();
+    })();
+
+    // ===== Three-Point Estimating (PERT/Triangular) — Auto-calc + button =====
+    document.addEventListener('DOMContentLoaded', function () {
+      var $ = function(id){ return document.getElementById(id); };
+      if (!$('tpe-card')) return; // run only if block exists
+
+      var nf = new Intl.NumberFormat(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      function unitText(){ return ($('tpe_unit') && $('tpe_unit').value === 'hours') ? 'hours' : 'days'; }
+      function toNum(v){ var n = parseFloat(v); return Number.isFinite(n) ? n : NaN; }
+      function sdTriangular(O,M,P){ var num=(O*O+M*M+P*P - O*M - O*P - M*P); return Math.sqrt(Math.max(0, num/18)); }
+
+      function summarize(E, SD, low, high, M, method, u) {
+        var el = $('tpe_summary');
+        if (!Number.isFinite(E)) { el.textContent = 'Enter valid O/M/P (P should be ≥ O).'; return; }
+        var label = method === 'triangular' ? 'Triangular' : 'PERT';
+        var buffer = Math.max(0, high - M);
+        el.textContent = label + ' plan ~' + nf.format(E) + ' ' + u + ' (expected). 90% range: ' +
+                         nf.format(low) + '–' + nf.format(high) + ' ' + u + '. Use ~' +
+                         nf.format(buffer) + ' ' + u + ' buffer beyond your most likely.';
+      }
+
+      function calc() {
+        var O = toNum($('tpe_o') && $('tpe_o').value);
+        var M = toNum($('tpe_m') && $('tpe_m').value);
+        var P = toNum($('tpe_p') && $('tpe_p').value);
+        var method = $('tpe_method') ? $('tpe_method').value : 'pert';
+        var u = unitText();
+
+        if (!Number.isFinite(O) || !Number.isFinite(M) || !Number.isFinite(P) || P < O) {
+          $('tpe_e').textContent = '0.00';
+          $('tpe_sd').textContent = '0.00';
+          $('tpe_ci').textContent = '0.00–0.00';
+          $('tpe_signal').textContent = 'Enter valid estimates (P should be ≥ O)';
+          $('tpe_steps').textContent = '';
+          summarize(NaN,NaN,NaN,NaN,NaN,method,u);
+          return;
+        }
+
+        var E  = (method === 'triangular') ? (O + M + P) / 3 : (O + 4*M + P) / 6;
+        var SD = (method === 'triangular') ? sdTriangular(O,M,P) : (P - O) / 6;
+        var z = 1.645, low = E - z*SD, high = E + z*SD;
+
+        $('tpe_e').textContent  = nf.format(E)  + ' ' + u;
+        $('tpe_sd').textContent = nf.format(SD) + ' ' + u;
+        $('tpe_ci').textContent = nf.format(low) + '–' + nf.format(high) + ' ' + u;
+        $('tpe_signal').textContent = (SD / (E || 1) < 0.25) ? 'Tight estimate' : 'Wide estimate';
+
+        var steps = (method === 'triangular')
+          ? [
+              'Expected E = (O + M + P) ÷ 3 = (' + O + ' + ' + M + ' + ' + P + ') ÷ 3 = ' + nf.format(E) + ' ' + u,
+              'Std. deviation (triangular) = √((O² + M² + P² − O·M − O·P − M·P) ÷ 18) = ' + nf.format(SD) + ' ' + u,
+              '90% range ≈ E ± 1.645 × SD = ' + nf.format(E) + ' ± ' + nf.format(z*SD) + ' = ' + nf.format(low) + '–' + nf.format(high) + ' ' + u
+            ].join('\n')
+          : [
+              'Expected E = (O + 4M + P) ÷ 6 = (' + O + ' + 4×' + M + ' + ' + P + ') ÷ 6 = ' + nf.format(E) + ' ' + u,
+              'Std. deviation (PERT) = (P − O) ÷ 6 = (' + P + ' − ' + O + ') ÷ 6 = ' + nf.format(SD) + ' ' + u,
+              '90% range ≈ E ± 1.645 × SD = ' + nf.format(E) + ' ± ' + nf.format(z*SD) + ' = ' + nf.format(low) + '–' + nf.format(high) + ' ' + u
+            ].join('\n');
+        $('tpe_steps').textContent = steps;
+        summarize(E, SD, low, high, M, method, u);
+      }
+
+      // Auto-calc on any change/typing
+      ['tpe_o','tpe_m','tpe_p','tpe_unit','tpe_method'].forEach(function(id){
+        var el = $(id); if (!el) return;
+        ['input','change','blur'].forEach(function(evt){ el.addEventListener(evt, calc); });
+        el.addEventListener('keydown', function(e){ if (e.key === 'Enter') { e.preventDefault(); calc(); } });
+      });
+
+      // Risk buttons
+      Array.prototype.forEach.call(document.querySelectorAll('[data-risk]'), function(b){
+        b.addEventListener('click', function(){
+          var level = b.getAttribute('data-risk');
+          var mEl = $('tpe_m'), oEl = $('tpe_o'), pEl = $('tpe_p');
+          var M = Number(mEl.value || 8) || 8;
+          if (!oEl.value) oEl.value = (0.8 * M).toFixed(2);
+          var factor = level==='high' ? 2.0 : level==='med' ? 1.6 : 1.3;
+          pEl.value = (M * factor).toFixed(2);
+          calc();
+        });
+      });
+
+      // Button (optional; not required for auto-calc)
+      var btn = $('tpe_calc_btn'); if (btn) btn.addEventListener('click', calc);
+
+      // Initial state: no seeding; will compute once user enters values
+      // But if all three are already present (e.g., browser autofill), compute immediately:
+      if ($('tpe_o').value && $('tpe_m').value && $('tpe_p').value) calc();
+    });
   </script>
 </body>
 </html>
